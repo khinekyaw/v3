@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { cn } from '../../lib/utils';
 
 interface BadgeProps {
   variant?: 'primary' | 'secondary' | 'success';
@@ -6,7 +7,7 @@ interface BadgeProps {
   className?: string;
 }
 
-export function Badge({ variant = 'primary', children, className = '' }: BadgeProps) {
+export function Badge({ variant = 'primary', children, className }: BadgeProps) {
   const baseStyles = 'inline-flex items-center px-2.5 py-0.5 text-xs font-bold rounded-lg';
 
   const variants = {
@@ -16,7 +17,7 @@ export function Badge({ variant = 'primary', children, className = '' }: BadgePr
   };
 
   return (
-    <span className={`${baseStyles} ${variants[variant]} ${className}`}>
+    <span className={cn(baseStyles, variants[variant], className)}>
       {children}
     </span>
   );

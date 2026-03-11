@@ -1,27 +1,27 @@
+import { ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Container, Section } from '../components/layout';
 import { BlogCard } from '../components/BlogCard';
 import { posts } from '../data/posts';
 
-const featured = posts.slice(0, 3);
-
-export function Blog() {
+export function BlogPage() {
   return (
-    <Section id="blog">
+    <Section className="py-10">
       <Container>
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-xl font-semibold text-foreground">Blog</h2>
-          <Link
-            to="/blog"
-            className="text-foreground-tertiary hover:text-foreground-secondary text-sm transition-colors cursor-pointer flex items-center gap-1"
-          >
-            See More Blog Posts
-            <span>&rarr;</span>
-          </Link>
-        </div>
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 text-sm text-foreground-secondary hover:text-foreground transition-colors mb-12"
+        >
+          <ArrowLeft size={16} />
+          Back to Home
+        </Link>
+
+        <h1 className="text-3xl font-bold text-foreground mb-16 animate-fade-in">
+          All Posts
+        </h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {featured.map((post, index) => (
+          {posts.map((post, index) => (
             <Link
               key={post.slug}
               to={`/blog/${post.slug}`}

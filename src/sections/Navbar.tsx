@@ -1,7 +1,18 @@
 import { ArrowUpRight, Moon, Sun } from "lucide-react"
+import { Link as RouterLink } from "react-router-dom"
 import { Container } from "../components/layout"
-import { Link } from "../components/ui"
 import { useTheme } from "../hooks/useTheme"
+
+function PacmanLogo() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M14 0C6.268 0 0 6.268 0 14s6.268 14 14 14 14-6.268 14-14L14 14V0Z"
+        fill="currentColor"
+      />
+    </svg>
+  )
+}
 
 export function Navbar() {
   const { theme, toggleTheme } = useTheme()
@@ -13,33 +24,36 @@ export function Navbar() {
           {/* Left Side */}
           <div className="flex items-center gap-8">
             {/* Logo */}
-            <span className="text-xl font-bold text-foreground leading-7 hover:opacity-70 transition-opacity cursor-pointer">
-              SimpFolio
-            </span>
+            <RouterLink
+              to="/"
+              className="text-foreground hover:opacity-70 transition-opacity"
+            >
+              <PacmanLogo />
+            </RouterLink>
 
             {/* Nav Links */}
             <div className="hidden md:flex items-center gap-6">
-              <Link href="#about" variant="nav">
-                About
-              </Link>
-              <Link href="#achievement" variant="nav">
-                Achievement
-              </Link>
-              <Link href="#blog" variant="nav">
+              <RouterLink to="/projects" className="text-foreground-secondary hover:text-foreground text-sm transition-colors">
+                Projects
+              </RouterLink>
+              <RouterLink to="/blog" className="text-foreground-secondary hover:text-foreground text-sm transition-colors">
                 Blog
-              </Link>
+              </RouterLink>
             </div>
           </div>
 
           {/* Right Side */}
           <div className="flex items-center gap-4">
             {/* Connect Button */}
-            <button className="px-4 py-2 rounded-full border border-border flex items-center gap-2 hover:bg-secondary hover:scale-[1.02] active:scale-[0.98] transition-all duration-200">
+            <a
+              href="mailto:hello@example.com"
+              className="px-4 py-2 rounded-full border border-border flex items-center gap-2 hover:bg-secondary hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+            >
               <span className="text-sm font-medium text-foreground">
                 Let's Connect
               </span>
               <ArrowUpRight size={12} className="text-foreground" />
-            </button>
+            </a>
 
             {/* Theme Toggle */}
             <button

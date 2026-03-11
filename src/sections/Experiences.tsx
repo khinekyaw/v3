@@ -10,7 +10,7 @@ const experiences = [
 
 export function Experiences() {
   return (
-    <Section>
+    <Section id="experiences">
       <Container>
         <h2 className="text-xl font-semibold text-foreground mb-6">
           Experiences

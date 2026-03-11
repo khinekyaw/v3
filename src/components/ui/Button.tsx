@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
+import { cn } from '../../lib/utils';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'outline';
@@ -11,7 +12,7 @@ export function Button({
   variant = 'primary',
   size = 'md',
   children,
-  className = '',
+  className,
   leftIcon,
   ...props
 }: ButtonProps) {
@@ -31,7 +32,7 @@ export function Button({
 
   return (
     <button
-      className={`${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`}
+      className={cn(baseStyles, variants[variant], sizes[size], className)}
       {...props}
     >
       {leftIcon && <span className="mr-2">{leftIcon}</span>}

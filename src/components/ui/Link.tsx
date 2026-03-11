@@ -1,4 +1,5 @@
 import type { AnchorHTMLAttributes, ReactNode } from 'react';
+import { cn } from '../../lib/utils';
 
 interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   variant?: 'default' | 'nav' | 'muted';
@@ -8,7 +9,7 @@ interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
 export function Link({
   variant = 'default',
   children,
-  className = '',
+  className,
   ...props
 }: LinkProps) {
   const baseStyles = 'transition-colors cursor-pointer';
@@ -20,7 +21,7 @@ export function Link({
   };
 
   return (
-    <a className={`${baseStyles} ${variants[variant]} ${className}`} {...props}>
+    <a className={cn(baseStyles, variants[variant], className)} {...props}>
       {children}
     </a>
   );

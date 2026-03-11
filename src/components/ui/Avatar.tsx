@@ -1,3 +1,5 @@
+import { cn } from '../../lib/utils';
+
 interface AvatarProps {
   src?: string;
   alt?: string;
@@ -5,7 +7,7 @@ interface AvatarProps {
   className?: string;
 }
 
-export function Avatar({ src, alt = '', size = 'md', className = '' }: AvatarProps) {
+export function Avatar({ src, alt = '', size = 'md', className }: AvatarProps) {
   const sizes = {
     sm: 'w-8 h-8',
     md: 'w-12 h-12',
@@ -14,7 +16,7 @@ export function Avatar({ src, alt = '', size = 'md', className = '' }: AvatarPro
 
   return (
     <div
-      className={`${sizes[size]} rounded-full bg-white border border-border overflow-hidden flex items-center justify-center ${className}`}
+      className={cn(sizes[size], 'rounded-full bg-white border border-border overflow-hidden flex items-center justify-center', className)}
     >
       {src ? (
         <img src={src} alt={alt} className="w-full h-full object-cover" />
