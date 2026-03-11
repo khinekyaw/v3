@@ -6,7 +6,7 @@ import { professionalProjects, experimentProjects, type Project } from '../data/
 
 function ProjectGrid({ projects }: { projects: Project[] }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
       {projects.map((project, index) => (
         <Link
           key={project.slug}
@@ -15,8 +15,9 @@ function ProjectGrid({ projects }: { projects: Project[] }) {
           style={{ animationDelay: `${index * 0.1}s` }}
         >
           <ProjectCard
+            logo={project.logo}
             title={project.title}
-            description={project.description}
+            description={project.summary}
             links={project.links}
           />
         </Link>

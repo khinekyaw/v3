@@ -1,6 +1,7 @@
 import { ArrowLeft } from 'lucide-react';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { Container, Section } from '../components/layout';
+import { RichText } from '../components/RichText';
 import { posts } from '../data/posts';
 
 export function BlogDetailPage() {
@@ -46,9 +47,7 @@ export function BlogDetailPage() {
           </div>
 
           {/* Content */}
-          <div className="text-sm text-foreground-secondary leading-relaxed">
-            <p>{post.content}</p>
-          </div>
+          <RichText content={post.content} />
         </article>
       </Container>
     </Section>

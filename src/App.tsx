@@ -1,11 +1,18 @@
 import { useEffect } from "react"
-import { BrowserRouter, Routes, Route, Outlet, useLocation } from "react-router-dom"
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Outlet,
+  useLocation,
+} from "react-router-dom"
 import { Blog, Hero, Projects } from "./sections"
 import { Layout } from "./components/layout"
 import { ProjectsPage } from "./pages/ProjectsPage"
 import { ProjectDetailPage } from "./pages/ProjectDetailPage"
 import { BlogPage } from "./pages/BlogPage"
 import { BlogDetailPage } from "./pages/BlogDetailPage"
+import { Experiences } from "./sections/Experiences"
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -27,6 +34,7 @@ function HomePage() {
   return (
     <>
       <Hero />
+      <Experiences />
       <Projects />
       <Blog />
     </>

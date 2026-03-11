@@ -2,10 +2,9 @@ import { Container, Section } from '../components/layout';
 import { ExperienceCard } from '../components/ExperienceCard';
 
 const experiences = [
-  { company: "Acme.inc", role: "Frontend Developer", dateRange: "Dec 2024", isPresent: true },
-  { company: "Orion Global Services", role: "Full Stack Developer", dateRange: "Aug 2020 - May 2024" },
-  { company: "Vertex Dynamics", role: "Front-end Developer", dateRange: "Aug 2020 - May 2024" },
-  { company: "AtlasCore Systems", role: "Web Developer", dateRange: "Aug 2016 - July 2020" },
+  { company: "Codigo", role: "Front End Developer", dateRange: "Dec 2023", isPresent: true },
+  { company: "Dkmads", role: "Front End Developer", dateRange: "Jan 2023 - Nov 2023" },
+  { company: "UMG Myanmar", role: "Python Developer", dateRange: "Dec 2021 - June 2022" },
 ];
 
 export function Experiences() {

@@ -11,7 +11,7 @@ export function ProjectCard({ logo, title, description, links }: ProjectCardProp
   return (
     <div className="py-6 rounded-2xl flex flex-col gap-3.25">
       {/* Logo */}
-      <div className="w-16 h-16 rounded-lg bg-secondary overflow-hidden flex items-center justify-center">
+      <div className="w-16 h-16 rounded-lg overflow-hidden flex items-center justify-center">
         {logo ? (
           <img src={logo} alt={title} className="w-full h-full object-cover" />
         ) : (

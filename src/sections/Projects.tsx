@@ -29,8 +29,9 @@ export function Projects() {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <ProjectCard
+                logo={project.logo}
                 title={project.title}
-                description={project.description}
+                description={project.summary}
                 links={project.links}
               />
             </Link>

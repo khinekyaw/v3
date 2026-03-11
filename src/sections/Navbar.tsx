@@ -46,7 +46,7 @@ export function Navbar() {
           <div className="flex items-center gap-4">
             {/* Connect Button */}
             <a
-              href="mailto:hello@example.com"
+              href="mailto:thekhinekyaw@gmail.com"
               className="px-4 py-2 rounded-full border border-border flex items-center gap-2 hover:bg-secondary hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
             >
               <span className="text-sm font-medium text-foreground">
