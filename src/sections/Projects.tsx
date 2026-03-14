@@ -23,7 +23,7 @@ export function Projects() {
           <h2 className="text-xl font-semibold text-foreground">Projects</h2>
           <Link
             to="/projects"
-            className="text-foreground-tertiary hover:text-foreground-secondary text-sm transition-colors cursor-pointer flex items-center gap-1"
+            className="text-foreground-secondary hover:text-foreground text-sm transition-colors cursor-pointer flex items-center gap-1"
           >
             See More Projects
             <span>&rarr;</span>

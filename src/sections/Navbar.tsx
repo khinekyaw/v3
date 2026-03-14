@@ -38,7 +38,9 @@ export function Navbar() {
   // Prevent body scroll when menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : ""
-    return () => { document.body.style.overflow = "" }
+    return () => {
+      document.body.style.overflow = ""
+    }
   }, [mobileOpen])
 
   return (
@@ -48,6 +50,7 @@ export function Navbar() {
           {/* Left Side */}
           <div className="flex items-center gap-8">
             <RouterLink
+              aria-label="Logo"
               to="/"
               className="text-foreground hover:opacity-70 transition-opacity"
             >
@@ -60,7 +63,7 @@ export function Navbar() {
                 <RouterLink
                   key={link.to}
                   to={link.to}
-                  className={`text-sm transition-colors ${pathname.startsWith(link.to) ? 'text-foreground font-medium' : 'text-foreground-secondary hover:text-foreground'}`}
+                  className={`text-sm transition-colors ${pathname.startsWith(link.to) ? "text-foreground font-medium" : "text-foreground-secondary hover:text-foreground"}`}
                 >
                   {link.label}
                 </RouterLink>
@@ -129,7 +132,9 @@ export function Navbar() {
                     ? "text-foreground font-medium bg-secondary"
                     : "text-foreground-secondary hover:text-foreground hover:bg-secondary"
                 }`}
-                style={{ transitionDelay: mobileOpen ? `${index * 75}ms` : "0ms" }}
+                style={{
+                  transitionDelay: mobileOpen ? `${index * 75}ms` : "0ms",
+                }}
               >
                 {link.label}
               </RouterLink>
@@ -141,7 +146,11 @@ export function Navbar() {
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-2"
               }`}
-              style={{ transitionDelay: mobileOpen ? `${navLinks.length * 75}ms` : "0ms" }}
+              style={{
+                transitionDelay: mobileOpen
+                  ? `${navLinks.length * 75}ms`
+                  : "0ms",
+              }}
             >
               Let's Connect
               <ArrowUpRight size={12} />
