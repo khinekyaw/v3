@@ -1,5 +1,5 @@
 import { ArrowUpRight, Moon, Sun } from "lucide-react"
-import { Link as RouterLink } from "react-router-dom"
+import { Link as RouterLink, useLocation } from "react-router-dom"
 import { Container } from "../components/layout"
 import { useTheme } from "../hooks/useTheme"
 
@@ -16,6 +16,7 @@ function PacmanLogo() {
 
 export function Navbar() {
   const { theme, toggleTheme } = useTheme()
+  const { pathname } = useLocation()
 
   return (
     <header className="sticky top-0 bg-background/70 z-10 border-border backdrop-blur-[6px] animate-fade-in-down">
@@ -33,10 +34,10 @@ export function Navbar() {
 
             {/* Nav Links */}
             <div className="hidden md:flex items-center gap-6">
-              <RouterLink to="/projects" className="text-foreground-secondary hover:text-foreground text-sm transition-colors">
+              <RouterLink to="/projects" className={`text-sm transition-colors ${pathname.startsWith('/projects') ? 'text-foreground font-medium' : 'text-foreground-secondary hover:text-foreground'}`}>
                 Projects
               </RouterLink>
-              <RouterLink to="/blog" className="text-foreground-secondary hover:text-foreground text-sm transition-colors">
+              <RouterLink to="/blog" className={`text-sm transition-colors ${pathname.startsWith('/blog') ? 'text-foreground font-medium' : 'text-foreground-secondary hover:text-foreground'}`}>
                 Blog
               </RouterLink>
             </div>

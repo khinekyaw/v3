@@ -29,19 +29,20 @@ export function ProjectCard({ logo, title, description, links }: ProjectCardProp
       {links && links.length > 0 && (
         <div className="flex items-center gap-2">
           {links.map((link, index) => (
-            <a
+            <button
               key={index}
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="h-[22px] px-3 py-1 bg-foreground rounded-md flex items-center gap-1.5 hover:opacity-80 transition-opacity"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.open(link.href, '_blank', 'noopener,noreferrer');
+              }}
+              className="h-[22px] px-3 py-1 bg-foreground rounded-md flex items-center gap-1.5 hover:opacity-80 transition-opacity cursor-pointer"
             >
               <LinkIcon size={10} className="text-primary-foreground" />
               <span className="text-[10px] font-bold text-primary-foreground uppercase leading-[15px]">
                 {link.label}
               </span>
-            </a>
+            </button>
           ))}
         </div>
       )}

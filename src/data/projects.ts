@@ -17,18 +17,18 @@ export const professionalProjects: Project[] = [
     video: "/renonation-demo.webm",
     summary: "Singapore renovation platform.",
     description:
-      "I assisted the frontend development of a Singapore-based platform that connects homeowners with vetted interior design and renovation professionals.",
-    links: [{ label: "WEBSITE", href: "https://www.renonation.sg" }],
+      "Contributed to the frontend development of a Singapore-based platform that connects homeowners with vetted interior designers and renovation professionals.",
+    links: [{ label: "Website", href: "https://www.renonation.sg" }],
   },
   {
     slug: "suzuki-myanmar-motor",
     title: "Suzuki Myanmar",
     logo: "/suzuki-myanmar-motor-logo.png",
     image: "/suzuki-myanmar-motor-demo.png",
-    summary: "A motor brand website.",
+    summary: "Official website for Suzuki Myanmar Motor.",
     description:
-      "Led the development of a pixel-perfect, mobile-first web application for Suzuki Myanmar Motor.",
-    links: [{ label: "WEBSITE", href: "https://suzukimyanmar.com/" }],
+      "Led the development of a pixel-perfect, mobile-first website for Suzuki Myanmar Motor.",
+    links: [{ label: "Website", href: "https://suzukimyanmar.com/" }],
   },
   {
     slug: "spotvnow",
@@ -37,8 +37,8 @@ export const professionalProjects: Project[] = [
     image: "/spotv-demo.png",
     summary: "Korean sports streaming platform.",
     description:
-      "I assisted the frontend development of a Korean sports streaming platform delivering live and on-demand coverage of major leagues and tournaments to viewers across Asia.",
-    links: [{ label: "WEBSITE", href: "https://www.spotvnow.com/Home" }],
+      "Assisted with frontend development for a Korean sports streaming platform delivering live and on-demand coverage of major leagues and tournaments across Asia.",
+    links: [{ label: "Website", href: "https://www.spotvnow.com/Home" }],
   },
   {
     slug: "chit-maymay",
@@ -47,17 +47,18 @@ export const professionalProjects: Project[] = [
     image: "/chitmaymay-demo.png",
     summary: "Landing page for a parenting app.",
     description:
-      "Led in building this website.",
+      "Led the development of the marketing website for this parenting app.",
     video: "",
-    links: [{ label: "WEBSITE", href: "https://chitmaymay.com" }],
+    links: [{ label: "Website", href: "https://chitmaymay.com" }],
   },
   {
     slug: "codigo",
     title: "Codigo",
     logo: "/codigo-logo.png",
     image: "/codigo-demo.png",
-    summary: "A digital agency.",
-    description: "I maintained the frontend of this website.",
+    summary: "Digital agency website.",
+    description:
+      "Maintained and improved the frontend of the agency’s website.",
     video: "",
     links: [{ label: "Website", href: "https://codigo.co" }],
   },
@@ -68,7 +69,7 @@ export const professionalProjects: Project[] = [
     image: "/waddy-cover.png",
     summary: "Burmese chatbot platform.",
     description:
-      "I led the development of an internal chatbot platform that lets businesses create and manage their own chatbots with Myanmar and English language support.",
+      "Led the development of an internal chatbot platform that enables businesses to create and manage chatbots with Myanmar and English language support.",
     video: "",
     links: [],
   },
@@ -95,7 +96,16 @@ export const experimentProjects: Project[] = [
     image: "/agent-zero-demo.png",
     links: [{ label: "GITHUB", href: "#" }],
   },
-
+  {
+    slug: "portfolio-v3",
+    title: "Portfolio V3",
+    logo: "/v3-logo.png",
+    image: "/v3-demo.png",
+    summary: "This website, vibe coded with Claude Code.",
+    description:
+      "My personal portfolio website, fully vibe coded with Claude Code. I fed it the Figma design and let it do the heavy lifting. Built with React, Tailwind CSS, and a lot of AI-assisted back and forth.\n\nUI design inspired by [SimpFolio by Hisyam Akbar](https://dribbble.com/shots/26490004-Minimalist-Personal-Site-SimpFolio) on Dribbble.\n\nBuilt with Claude Code.",
+    links: [{ label: "GITHUB", href: "#" }],
+  },
   {
     slug: "text-styles-to-tailwind-css",
     title: "Text Styles to Tailwind CSS",

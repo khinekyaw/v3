@@ -1,9 +1,19 @@
-import { Link } from 'react-router-dom';
-import { Container, Section } from '../components/layout';
-import { ProjectCard } from '../components/ProjectCard';
-import { professionalProjects } from '../data/projects';
+import { Link } from "react-router-dom"
+import { Container, Section } from "../components/layout"
+import { ProjectCard } from "../components/ProjectCard"
+import { allProjects } from "../data/projects"
 
-const featured = professionalProjects.slice(0, 6);
+const featuredSlugs = [
+  "renonation",
+  "suzuki-myanmar-motor",
+  "chit-maymay",
+  "arisa",
+  "agent-zero",
+  "text-styles-to-tailwind-css",
+]
+const featured = featuredSlugs
+  .map((slug) => allProjects.find((p) => p.slug === slug)!)
+  .filter(Boolean)
 
 export function Projects() {
   return (
@@ -20,7 +30,7 @@ export function Projects() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {featured.map((project, index) => (
             <Link
               key={project.slug}
@@ -39,5 +49,5 @@ export function Projects() {
         </div>
       </Container>
     </Section>
-  );
+  )
 }
