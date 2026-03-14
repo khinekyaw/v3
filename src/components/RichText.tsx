@@ -1,13 +1,14 @@
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 
 interface RichTextProps {
-  content: string;
+  content: string
 }
 
 export function RichText({ content }: RichTextProps) {
   return (
-    <div className="prose prose-sm max-w-none text-foreground-secondary leading-relaxed
+    <div
+      className="prose prose-sm max-w-none text-foreground-secondary leading-relaxed
       prose-headings:text-foreground prose-headings:font-bold
       prose-h2:text-lg prose-h2:mt-8 prose-h2:mb-3
       prose-h3:text-base prose-h3:mt-6 prose-h3:mb-2
@@ -26,8 +27,18 @@ export function RichText({ content }: RichTextProps) {
       prose-th:text-foreground prose-th:font-semibold prose-th:text-left prose-th:py-2 prose-th:pr-4 prose-th:text-xs
       prose-td:text-foreground-secondary prose-td:py-2 prose-td:pr-4 prose-td:text-xs
       prose-tr:border-b prose-tr:border-border-light
-    ">
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+    "
+    >
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={{
+          a: ({ ...props }) => (
+            <a {...props} target="_blank" rel="noopener noreferrer" />
+          ),
+        }}
+      >
+        {content}
+      </ReactMarkdown>
     </div>
-  );
+  )
 }

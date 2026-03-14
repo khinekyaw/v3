@@ -347,7 +347,7 @@ button {
   }
 }
 
-.pacman-logo:hover {
+.pacman-logo-parent:hover .pacman-logo {
   animation: pacman-chomp 0.35s ease-in-out infinite;
 }
 

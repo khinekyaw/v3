@@ -100,7 +100,7 @@ export const experimentProjects: Project[] = [
     slug: "portfolio-v3",
     title: "Portfolio V3",
     logo: "/images/projects/pacman-logo.webp",
-    image: "/v3-demo.webp",
+    image: "/images/projects/v3-demo.webp",
     summary: "This website, vibe coded with Claude Code.",
     description:
       "My personal portfolio website, fully vibe coded with Claude Code. I fed it the Figma design and let it do the heavy lifting. Built with React, Tailwind CSS, and a lot of AI-assisted back and forth.\n\nUI design inspired by [SimpFolio by Hisyam Akbar](https://dribbble.com/shots/26490004-Minimalist-Personal-Site-SimpFolio) on Dribbble.\n\nBuilt with Claude Code.",
