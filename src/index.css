@@ -310,6 +310,51 @@ button {
   box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.6);
 }
 
+/* Custom cursor (desktop only) */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background: white;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  translate: -50% -50%;
+  transition: opacity 0.3s ease;
+  will-change: transform, width, height;
+}
+
+@media (pointer: coarse) {
+  .cursor-dot {
+    display: none !important;
+  }
+}
+
+/* Pacman logo chomp animation */
+.pacman-logo {
+  clip-path: polygon(50% 50%, 100% 15%, 100% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 85%, 50% 50%);
+  transition: clip-path 0.15s ease-in-out;
+}
+
+@keyframes pacman-chomp {
+  0%, 100% {
+    clip-path: polygon(50% 50%, 100% 15%, 100% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 85%, 50% 50%);
+  }
+  50% {
+    clip-path: polygon(50% 50%, 100% 45%, 100% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 55%, 50% 50%);
+  }
+}
+
+.pacman-logo:hover {
+  animation: pacman-chomp 0.35s ease-in-out infinite;
+}
+
+/* Game pacman head */
+.pacman-game-head {
+  animation: pacman-chomp 0.3s ease-in-out infinite;
+}
+
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
   *,

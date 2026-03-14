@@ -6,11 +6,14 @@ import { useTheme } from "../hooks/useTheme"
 
 function PacmanLogo() {
   return (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M14 0C6.268 0 0 6.268 0 14s6.268 14 14 14 14-6.268 14-14L14 14V0Z"
-        fill="currentColor"
-      />
+    <svg
+      width="28"
+      height="28"
+      viewBox="0 0 28 28"
+      xmlns="http://www.w3.org/2000/svg"
+      className="pacman-logo"
+    >
+      <circle cx="14" cy="14" r="14" fill="currentColor" />
     </svg>
   )
 }

@@ -13,8 +13,8 @@ export const professionalProjects: Project[] = [
   {
     slug: "renonation",
     title: "Renonation",
-    logo: "/renonation-logo.png",
-    video: "/renonation-demo.webm",
+    logo: "/images/projects/renonation-logo.png",
+    video: "/images/projects/renonation-demo.webm",
     summary: "Singapore renovation platform.",
     description:
       "Contributed to the frontend development of a Singapore-based platform that connects homeowners with vetted interior designers and renovation professionals.",
@@ -23,8 +23,8 @@ export const professionalProjects: Project[] = [
   {
     slug: "suzuki-myanmar-motor",
     title: "Suzuki Myanmar",
-    logo: "/suzuki-myanmar-motor-logo.png",
-    image: "/suzuki-myanmar-motor-demo.png",
+    logo: "/images/projects/suzuki-myanmar-motor-logo.png",
+    image: "/images/projects/suzuki-myanmar-motor-demo.png",
     summary: "Official website for Suzuki Myanmar Motor.",
     description:
       "Led the development of a pixel-perfect, mobile-first website for Suzuki Myanmar Motor.",
@@ -33,8 +33,8 @@ export const professionalProjects: Project[] = [
   {
     slug: "spotvnow",
     title: "SPOTV NOW",
-    logo: "/spotv-logo.png",
-    image: "/spotv-demo.png",
+    logo: "/images/projects/spotv-logo.png",
+    image: "/images/projects/spotv-demo.png",
     summary: "Korean sports streaming platform.",
     description:
       "Assisted with frontend development for a Korean sports streaming platform delivering live and on-demand coverage of major leagues and tournaments across Asia.",
@@ -43,8 +43,8 @@ export const professionalProjects: Project[] = [
   {
     slug: "chit-maymay",
     title: "Chit MayMay",
-    logo: "/chitmaymay-logo.png",
-    image: "/chitmaymay-demo.png",
+    logo: "/images/projects/chitmaymay-logo.png",
+    image: "/images/projects/chitmaymay-demo.png",
     summary: "Landing page for a parenting app.",
     description:
       "Led the development of the marketing website for this parenting app.",
@@ -54,8 +54,8 @@ export const professionalProjects: Project[] = [
   {
     slug: "codigo",
     title: "Codigo",
-    logo: "/codigo-logo.png",
-    image: "/codigo-demo.png",
+    logo: "/images/projects/codigo-logo.png",
+    image: "/images/projects/codigo-demo.png",
     summary: "Digital agency website.",
     description:
       "Maintained and improved the frontend of the agency’s website.",
@@ -65,8 +65,8 @@ export const professionalProjects: Project[] = [
   {
     slug: "waddy",
     title: "Waddy",
-    logo: "/waddy-logo.png",
-    image: "/waddy-cover.png",
+    logo: "/images/projects/waddy-logo.png",
+    image: "/images/projects/waddy-cover.png",
     summary: "Burmese chatbot platform.",
     description:
       "Led the development of an internal chatbot platform that enables businesses to create and manage chatbots with Myanmar and English language support.",
@@ -82,8 +82,8 @@ export const experimentProjects: Project[] = [
     summary: "Interactive 3D AI companion.",
     description:
       "An interactive 3D AI agent rendered in the browser, inspired by Grok's Ani. Users can speak or type to Arisa, and she responds with voice, synchronized lip movements, body animations, and emotion-driven facial expressions — all in real time.\n\n## How It Works\n\nThe user records audio or types a message. Audio is transcribed via ElevenLabs STT, then sent to xAI Grok which returns a text response along with an animation state and facial expression weights. The response is converted back to speech with ElevenLabs TTS, and lip-sync viseme data is extracted using Rhubarb. On the frontend, a 3D avatar rendered with Three.js and React Three Fiber plays the matching body animation, blends facial morph targets for the expression, and synchronizes mouth shapes to the audio.\n\n## Key Features\n\n- **Voice and text input** — speak or type, Arisa understands both\n- **Real-time lip sync** — mouth shapes driven by viseme data from Rhubarb\n- **LLM-controlled animations** — Grok decides the body animation and facial expression for each response\n- **Emotion-aware responses** — happy, sad, angry, relaxed, surprised — reflected in both voice tone and 3D expression\n- **Morph target blending** — smooth transitions between facial expressions using blend shapes\n\n## Tech Stack\n\n| Layer | Technology |\n|-------|------------|\n| Frontend | React, React Three Fiber, Three.js, Tailwind CSS |\n| Backend | Node.js, Express, TypeScript |\n| LLM | xAI Grok |\n| Voice | ElevenLabs (STT + TTS) |\n| Lip Sync | Rhubarb |\n| 3D | FBX animations, morph target blending |",
-    logo: "/arisa.png",
-    image: "/arisa-demo.png",
+    logo: "/images/projects/arisa.png",
+    image: "/images/projects/arisa-demo.png",
     links: [{ label: "GITHUB", href: "#" }],
   },
   {
@@ -92,14 +92,14 @@ export const experimentProjects: Project[] = [
     summary: "Fully offline voice assistant.",
     description:
       "My first attempt at building a fully local voice assistant, everything runs on your own machine. Say a wake word, talk to it, and it talks back. Simple as that.\n\nIt uses Faster Whisper for speech-to-text, a small local language model (Qwen3-1.7B) to generate responses, and Kokoro-82M to speak them out loud. The whole pipeline stays on-device, so nothing leaves your computer.\n\n## How It Works\n\n- **Wake word detection** — always listening for the trigger phrase, then starts recording\n- **Voice activity detection** — knows when you've stopped talking so it can respond\n- **Streaming responses** — starts generating and speaking before the full response is ready, so it feels snappy\n- **Conversation memory** — remembers what you said earlier in the conversation\n- **Auto sleep** — goes quiet after a period of inactivity\n\nThis was mostly a learning project to explore how far you can push local-only AI.",
-    logo: "/zero.png",
-    image: "/agent-zero-demo.png",
+    logo: "/images/projects/agent-zero-logo.png",
+    image: "/images/projects/agent-zero-demo.png",
     links: [{ label: "GITHUB", href: "#" }],
   },
   {
     slug: "portfolio-v3",
     title: "Portfolio V3",
-    logo: "/v3-logo.png",
+    logo: "/images/projects/pacman-logo.png",
     image: "/v3-demo.png",
     summary: "This website, vibe coded with Claude Code.",
     description:
@@ -112,8 +112,8 @@ export const experimentProjects: Project[] = [
     summary: "A Figma community plugin.",
     description:
       "A Figma community plugin that bridges the gap between design and development. Select any text layer or text style in Figma, and the plugin instantly generates the corresponding Tailwind CSS utility classes — including font size, weight, line height, letter spacing, and font family.\n\n## How It Works\n\nSelect a text layer or text style in your Figma file. The plugin reads the style properties and maps them to their Tailwind CSS equivalents. Copy the generated classes directly into your code — no manual translation needed.\n\n## Key Features\n\n- **One-click conversion** — select a text layer and get Tailwind classes instantly\n- **Full style coverage** — handles font size, weight, line height, letter spacing, and font family\n- **Works with text styles** — supports both local text styles and individual text layers\n- **Copy-ready output** — generated classes are ready to paste into your JSX or HTML",
-    logo: "/text-styles-to-taiwindcss-logo.png",
-    image: "/text-styles-to-taiwindcss-cover.png",
+    logo: "/images/projects/text-styles-to-taiwindcss-logo.png",
+    image: "/images/projects/text-styles-to-taiwindcss-cover.png",
     links: [
       {
         label: "FIGMA",

@@ -4,7 +4,7 @@ export const site = {
   location: 'Bangkok, Thailand',
   email: 'thekhinekyaw@gmail.com',
   phone: '+66 0660122240',
-  avatar: '/kkt.png',
+  avatar: '/images/kkt.png',
   bio: {
     highlighted: ['React, Next.js & TypeScript', 'scalable UI systems', 'sports streaming, automotive & AI'],
     full: 'I enjoy creating engaging web experiences and exploring new technologies.',

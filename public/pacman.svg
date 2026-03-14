@@ -1,3 +1,14 @@
-<svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M14 0C6.268 0 0 6.268 0 14s6.268 14 14 14 14-6.268 14-14L14 14V0Z" fill="#18181B"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path fill="#18181B">
+    <animate
+      attributeName="d"
+      dur="0.5s"
+      repeatCount="indefinite"
+      values="
+        M32 32 L58 10 A32 32 0 1 0 58 54 Z;
+        M32 32 L64 28 A32 32 0 1 0 64 36 Z;
+        M32 32 L58 10 A32 32 0 1 0 58 54 Z
+      "
+    />
+  </path>
 </svg>
