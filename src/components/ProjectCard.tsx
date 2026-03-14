@@ -32,6 +32,9 @@ export function ProjectCard({ logo, title, description, links }: ProjectCardProp
             <a
               key={index}
               href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
               className="h-[22px] px-3 py-1 bg-foreground rounded-md flex items-center gap-1.5 hover:opacity-80 transition-opacity"
             >
               <LinkIcon size={10} className="text-primary-foreground" />

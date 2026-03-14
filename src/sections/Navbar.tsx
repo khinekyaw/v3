@@ -58,7 +58,7 @@ export function Navbar() {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-secondary hover:rotate-12 active:scale-95 transition-all duration-200"
+              className="p-2 rounded-full cursor-pointer hover:bg-secondary hover:rotate-12 active:scale-95 transition-all duration-200"
               aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
             >
               {theme === "light" ? (

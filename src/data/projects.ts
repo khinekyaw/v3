@@ -11,46 +11,66 @@ export interface Project {
 
 export const professionalProjects: Project[] = [
   {
-    slug: "suzuki-myanmar-motor",
-    title: "Suzuki Myanmar Motor",
-    logo: "/suzuki-myanmar-motor-logo.png",
-    summary:
-      "Pixel-perfect, mobile-first web app for one of Myanmar's leading automotive brands.",
+    slug: "renonation",
+    title: "Renonation",
+    logo: "/renonation-logo.png",
+    video: "/renonation-demo.webm",
+    summary: "Singapore renovation platform.",
     description:
-      "Pixel-perfect, mobile-first web app for one of Myanmar's leading automotive brands.",
-    video: "",
-    links: [{ label: "WEBSITE", href: "#" }],
+      "I assisted the frontend development of a Singapore-based platform that connects homeowners with vetted interior design and renovation professionals.",
+    links: [{ label: "WEBSITE", href: "https://www.renonation.sg" }],
+  },
+  {
+    slug: "suzuki-myanmar-motor",
+    title: "Suzuki Myanmar",
+    logo: "/suzuki-myanmar-motor-logo.png",
+    image: "/suzuki-myanmar-motor-demo.png",
+    summary: "A motor brand website.",
+    description:
+      "Led the development of a pixel-perfect, mobile-first web application for Suzuki Myanmar Motor.",
+    links: [{ label: "WEBSITE", href: "https://suzukimyanmar.com/" }],
+  },
+  {
+    slug: "spotvnow",
+    title: "SPOTV NOW",
+    logo: "/spotv-logo.png",
+    image: "/spotv-demo.png",
+    summary: "Korean sports streaming platform.",
+    description:
+      "I assisted the frontend development of a Korean sports streaming platform delivering live and on-demand coverage of major leagues and tournaments to viewers across Asia.",
+    links: [{ label: "WEBSITE", href: "https://www.spotvnow.com/Home" }],
   },
   {
     slug: "chit-maymay",
     title: "Chit MayMay",
     logo: "/chitmaymay-logo.png",
-    summary:
-      "Landing page for a parenting app.",
+    image: "/chitmaymay-demo.png",
+    summary: "Landing page for a parenting app.",
     description:
-      "Animated landing page with scroll triggers, mouse interactions & Lottie animations.",
+      "Led in building this website.",
     video: "",
-    links: [{ label: "WEBSITE", href: "#" }],
+    links: [{ label: "WEBSITE", href: "https://chitmaymay.com" }],
   },
   {
-    slug: "codigo-design-system",
-    title: "Codigo Design System",
-    summary:
-      "Scalable React component library co-created with the design team. Cut dev time by 20%.",
-    description:
-      "Scalable React component library co-created with the design team. Cut dev time by 20%.",
+    slug: "codigo",
+    title: "Codigo",
+    logo: "/codigo-logo.png",
+    image: "/codigo-demo.png",
+    summary: "A digital agency.",
+    description: "I maintained the frontend of this website.",
     video: "",
-    links: [{ label: "GITHUB", href: "#" }],
+    links: [{ label: "Website", href: "https://codigo.co" }],
   },
   {
-    slug: "ai-chatbot-platform",
-    title: "AI Chatbot Platform",
-    summary:
-      "NLP-powered chatbot built with Django, deployed across Telegram, Messenger & WordPress.",
+    slug: "waddy",
+    title: "Waddy",
+    logo: "/waddy-logo.png",
+    image: "/waddy-cover.png",
+    summary: "Burmese chatbot platform.",
     description:
-      "NLP-powered chatbot built with Django, deployed across Telegram, Messenger & WordPress.",
+      "I led the development of an internal chatbot platform that lets businesses create and manage their own chatbots with Myanmar and English language support.",
     video: "",
-    links: [{ label: "GITHUB", href: "#" }],
+    links: [],
   },
 ]
 
@@ -62,7 +82,7 @@ export const experimentProjects: Project[] = [
     description:
       "An interactive 3D AI agent rendered in the browser, inspired by Grok's Ani. Users can speak or type to Arisa, and she responds with voice, synchronized lip movements, body animations, and emotion-driven facial expressions — all in real time.\n\n## How It Works\n\nThe user records audio or types a message. Audio is transcribed via ElevenLabs STT, then sent to xAI Grok which returns a text response along with an animation state and facial expression weights. The response is converted back to speech with ElevenLabs TTS, and lip-sync viseme data is extracted using Rhubarb. On the frontend, a 3D avatar rendered with Three.js and React Three Fiber plays the matching body animation, blends facial morph targets for the expression, and synchronizes mouth shapes to the audio.\n\n## Key Features\n\n- **Voice and text input** — speak or type, Arisa understands both\n- **Real-time lip sync** — mouth shapes driven by viseme data from Rhubarb\n- **LLM-controlled animations** — Grok decides the body animation and facial expression for each response\n- **Emotion-aware responses** — happy, sad, angry, relaxed, surprised — reflected in both voice tone and 3D expression\n- **Morph target blending** — smooth transitions between facial expressions using blend shapes\n\n## Tech Stack\n\n| Layer | Technology |\n|-------|------------|\n| Frontend | React, React Three Fiber, Three.js, Tailwind CSS |\n| Backend | Node.js, Express, TypeScript |\n| LLM | xAI Grok |\n| Voice | ElevenLabs (STT + TTS) |\n| Lip Sync | Rhubarb |\n| 3D | FBX animations, morph target blending |",
     logo: "/arisa.png",
-    video: "",
+    image: "/arisa-demo.png",
     links: [{ label: "GITHUB", href: "#" }],
   },
   {
@@ -70,17 +90,16 @@ export const experimentProjects: Project[] = [
     title: "Agent Zero",
     summary: "Fully offline voice assistant.",
     description:
-      "A fully offline, real-time voice assistant that runs entirely on your own hardware. Zero listens for a wake word, records your speech, transcribes it with Faster Whisper, generates a response using a local Qwen3-1.7B language model, and speaks it back with Kokoro-82M text-to-speech — all without any cloud services or API keys. Features include always-on wake word detection via OpenWakeWord, WebRTC voice activity detection, streaming LLM responses for low latency, sentence-chunked TTS for fast time-to-first-word, mid-sentence interruption handling, conversation memory across turns, and automatic sleep after idle periods. Built for privacy-sensitive environments, air-gapped systems, or anyone who wants a capable voice assistant without sending data off-device.",
+      "My first attempt at building a fully local voice assistant, everything runs on your own machine. Say a wake word, talk to it, and it talks back. Simple as that.\n\nIt uses Faster Whisper for speech-to-text, a small local language model (Qwen3-1.7B) to generate responses, and Kokoro-82M to speak them out loud. The whole pipeline stays on-device, so nothing leaves your computer.\n\n## How It Works\n\n- **Wake word detection** — always listening for the trigger phrase, then starts recording\n- **Voice activity detection** — knows when you've stopped talking so it can respond\n- **Streaming responses** — starts generating and speaking before the full response is ready, so it feels snappy\n- **Conversation memory** — remembers what you said earlier in the conversation\n- **Auto sleep** — goes quiet after a period of inactivity\n\nThis was mostly a learning project to explore how far you can push local-only AI.",
     logo: "/zero.png",
-    video: "",
+    image: "/agent-zero-demo.png",
     links: [{ label: "GITHUB", href: "#" }],
   },
 
   {
     slug: "text-styles-to-tailwind-css",
     title: "Text Styles to Tailwind CSS",
-    summary:
-      "Figma plugin that converts your text styles into Tailwind CSS utility classes.",
+    summary: "A Figma community plugin.",
     description:
       "A Figma community plugin that bridges the gap between design and development. Select any text layer or text style in Figma, and the plugin instantly generates the corresponding Tailwind CSS utility classes — including font size, weight, line height, letter spacing, and font family.\n\n## How It Works\n\nSelect a text layer or text style in your Figma file. The plugin reads the style properties and maps them to their Tailwind CSS equivalents. Copy the generated classes directly into your code — no manual translation needed.\n\n## Key Features\n\n- **One-click conversion** — select a text layer and get Tailwind classes instantly\n- **Full style coverage** — handles font size, weight, line height, letter spacing, and font family\n- **Works with text styles** — supports both local text styles and individual text layers\n- **Copy-ready output** — generated classes are ready to paste into your JSX or HTML",
     logo: "/text-styles-to-taiwindcss-logo.png",

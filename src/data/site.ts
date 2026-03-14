@@ -1,13 +1,13 @@
 export const site = {
   name: 'Khine Kyaw Tun',
-  role: 'Frontend Developer',
+  role: 'Software Engineer',
   location: 'Bangkok, Thailand',
   email: 'thekhinekyaw@gmail.com',
   phone: '+66 0660122240',
   avatar: '/kkt.png',
   bio: {
     highlighted: ['React, Next.js & TypeScript', 'scalable UI systems', 'sports streaming, automotive & AI'],
-    full: 'I build fast, polished interfaces that people actually enjoy using. From design systems to production apps, I care about the details that make software feel right.',
+    full: 'I enjoy creating engaging web experiences and exploring new technologies. Currently experimenting with vibe coding and AI agents.',
   },
   social: {
     linkedin: 'https://linkedin.com/in/khinekyaw',
