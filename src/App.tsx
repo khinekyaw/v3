@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { lazy, Suspense, useEffect } from "react"
 import {
   BrowserRouter,
   Routes,
@@ -8,11 +8,25 @@ import {
 } from "react-router-dom"
 import { Blog, Hero, Projects } from "./sections"
 import { Layout } from "./components/layout"
-import { ProjectsPage } from "./pages/ProjectsPage"
-import { ProjectDetailPage } from "./pages/ProjectDetailPage"
-import { BlogPage } from "./pages/BlogPage"
-import { BlogDetailPage } from "./pages/BlogDetailPage"
 import { Experiences } from "./sections/Experiences"
+
+// Lazy-load non-homepage routes
+const ProjectsPage = lazy(() =>
+  import("./pages/ProjectsPage").then((m) => ({ default: m.ProjectsPage }))
+)
+const ProjectDetailPage = lazy(() =>
+  import("./pages/ProjectDetailPage").then((m) => ({
+    default: m.ProjectDetailPage,
+  }))
+)
+const BlogPage = lazy(() =>
+  import("./pages/BlogPage").then((m) => ({ default: m.BlogPage }))
+)
+const BlogDetailPage = lazy(() =>
+  import("./pages/BlogDetailPage").then((m) => ({
+    default: m.BlogDetailPage,
+  }))
+)
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -25,7 +39,9 @@ function ScrollToTop() {
 function AppLayout() {
   return (
     <Layout>
-      <Outlet />
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </Layout>
   )
 }

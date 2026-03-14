@@ -2,14 +2,60 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/pacman.svg" />
+    <link rel="apple-touch-icon" href="/og.png" />
+
+    <!-- Fonts: swap for faster first paint -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>v3</title>
+    <meta name="theme-color" content="#FDFDFD" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#09090B" media="(prefers-color-scheme: dark)" />
+    <meta name="author" content="Khine Kyaw Tun" />
+    <meta name="robots" content="index, follow" />
+
+    <title>Khine Kyaw Tun — Software Engineer</title>
+    <meta name="description" content="Software engineer building engaging web experiences with React, Next.js & TypeScript. Based in Bangkok, Thailand." />
+    <link rel="canonical" href="https://khinekyaw.dev/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://khinekyaw.dev/" />
+    <meta property="og:title" content="Khine Kyaw Tun — Software Engineer" />
+    <meta property="og:description" content="Software engineer building engaging web experiences with React, Next.js & TypeScript." />
+    <meta property="og:image" content="https://khinekyaw.dev/og.png" />
+    <meta property="og:site_name" content="Khine Kyaw Tun" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Khine Kyaw Tun — Software Engineer" />
+    <meta name="twitter:description" content="Software engineer building engaging web experiences with React, Next.js & TypeScript." />
+    <meta name="twitter:image" content="https://khinekyaw.dev/og.png" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Khine Kyaw Tun",
+      "url": "https://khinekyaw.dev",
+      "jobTitle": "Software Engineer",
+      "sameAs": [
+        "https://linkedin.com/in/khinekyaw",
+        "https://github.com/khinekyaw"
+      ]
+    }
+    </script>
   </head>
   <body>
+    <!-- Prevent dark-mode flash (runs before React) -->
+    <script>
+      (function(){var t=localStorage.getItem('theme');if(t==='dark'||((!t)&&matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}})()
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
