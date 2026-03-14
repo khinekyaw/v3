@@ -6,7 +6,7 @@ import { professionalProjects, experimentProjects, type Project } from '../data/
 
 function ProjectGrid({ projects }: { projects: Project[] }) {
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
       {projects.map((project, index) => (
         <Link
           key={project.slug}
@@ -32,17 +32,17 @@ export function ProjectsPage() {
       <Container>
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-sm text-foreground-secondary hover:text-foreground transition-colors mb-12"
+          className="inline-flex items-center gap-2 text-sm text-foreground-secondary hover:text-foreground transition-colors mb-8 md:mb-12"
         >
           <ArrowLeft size={16} />
           Back to Home
         </Link>
 
-        <h1 className="text-3xl font-bold text-foreground mb-16 animate-fade-in">
+        <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-10 md:mb-16 animate-fade-in">
           All Projects
         </h1>
 
-        <div className="flex flex-col gap-16">
+        <div className="flex flex-col gap-10 md:gap-16">
           <div className="animate-fade-in-up">
             <SectionHeader title="Professional" />
             <ProjectGrid projects={professionalProjects} />

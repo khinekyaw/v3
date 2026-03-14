@@ -17,7 +17,7 @@ export function BlogDetailPage() {
       <Container>
         <Link
           to="/blog"
-          className="inline-flex items-center gap-2 text-sm text-foreground-secondary hover:text-foreground transition-colors mb-12"
+          className="inline-flex items-center gap-2 text-sm text-foreground-secondary hover:text-foreground transition-colors mb-8 md:mb-12"
         >
           <ArrowLeft size={16} />
           Back to Blog
@@ -39,7 +39,7 @@ export function BlogDetailPage() {
             {post.tags.map((tag, index) => (
               <span
                 key={index}
-                className="px-1.5 py-0.5 bg-secondary rounded-lg text-[8px] font-medium text-foreground-secondary leading-[13.5px]"
+                className="px-2 py-0.5 bg-secondary rounded-lg text-[10px] font-medium text-foreground-secondary leading-4"
               >
                 {tag}
               </span>

@@ -6,7 +6,7 @@ interface BlogCardProps {
 
 export function BlogCard({ date, title, tags }: BlogCardProps) {
   return (
-    <div className="p-5 rounded-2xl border border-border flex flex-col justify-between h-[218px] hover-lift cursor-pointer">
+    <div className="p-4 md:p-5 rounded-xl md:rounded-2xl border border-border flex flex-col justify-between h-[190px] md:h-[218px] hover-lift cursor-pointer">
       {/* Top content */}
       <div className="flex flex-col">
         {/* Date */}
@@ -25,7 +25,7 @@ export function BlogCard({ date, title, tags }: BlogCardProps) {
         {tags.map((tag, index) => (
           <span
             key={index}
-            className="px-1.5 py-0.5 bg-secondary rounded-lg text-[8px] font-medium text-foreground-secondary leading-[13.5px] hover:bg-border transition-colors"
+            className="px-2 py-0.5 bg-secondary rounded-lg text-[10px] font-medium text-foreground-secondary leading-4 hover:bg-border transition-colors"
           >
             {tag}
           </span>

@@ -18,7 +18,7 @@ export function ProjectDetailPage() {
       <Container>
         <Link
           to="/projects"
-          className="inline-flex items-center gap-2 text-sm text-foreground-secondary hover:text-foreground transition-colors mb-12"
+          className="inline-flex items-center gap-2 text-sm text-foreground-secondary hover:text-foreground transition-colors mb-8 md:mb-12"
         >
           <ArrowLeft size={16} />
           Back to Projects
@@ -26,7 +26,7 @@ export function ProjectDetailPage() {
 
         <div className="max-w-2xl animate-fade-in">
           {/* Media */}
-          <div className="w-full aspect-video rounded-2xl bg-secondary overflow-hidden mb-8">
+          <div className="w-full aspect-video rounded-xl md:rounded-2xl bg-secondary overflow-hidden mb-6 md:mb-8">
             {project.video ? (
               <VideoPlayer src={project.video} className="w-full h-full" />
             ) : project.image ? (

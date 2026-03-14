@@ -9,9 +9,9 @@ interface ProjectCardProps {
 
 export function ProjectCard({ logo, title, description, links }: ProjectCardProps) {
   return (
-    <div className="py-6 rounded-2xl flex flex-col gap-3.25">
+    <div className="md:py-6 py-4 rounded-2xl flex md:flex-col gap-3.25">
       {/* Logo */}
-      <div className="w-16 h-16 rounded-lg overflow-hidden flex items-center justify-center">
+      <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-lg overflow-hidden flex items-center justify-center">
         {logo ? (
           <img src={logo} alt={title} className="w-full h-full object-cover" />
         ) : (
@@ -20,9 +20,9 @@ export function ProjectCard({ logo, title, description, links }: ProjectCardProp
       </div>
 
       {/* Content */}
-      <div className="flex flex-col gap-2">
-        <h3 className="text-lg font-bold text-foreground leading-7">{title}</h3>
-        <p className="text-sm text-foreground-secondary leading-[22.75px]">{description}</p>
+      <div className="flex flex-col md:gap-2">
+        <h3 className="text-base sm:text-lg font-bold text-foreground leading-6 sm:leading-7">{title}</h3>
+        <p className="text-xs sm:text-sm text-foreground-secondary leading-5 sm:leading-[22.75px]">{description}</p>
       </div>
 
       {/* Links */}
@@ -36,7 +36,7 @@ export function ProjectCard({ logo, title, description, links }: ProjectCardProp
                 e.stopPropagation();
                 window.open(link.href, '_blank', 'noopener,noreferrer');
               }}
-              className="h-[22px] px-3 py-1 bg-foreground rounded-md flex items-center gap-1.5 hover:opacity-80 transition-opacity cursor-pointer"
+              className="h-[22px] px-3 py-1 bg-foreground rounded-md hidden md:flex items-center gap-1.5 hover:opacity-80 transition-opacity cursor-pointer"
             >
               <LinkIcon size={10} className="text-primary-foreground" />
               <span className="text-[10px] font-bold text-primary-foreground uppercase leading-[15px]">

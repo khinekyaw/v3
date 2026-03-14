@@ -10,17 +10,17 @@ export function BlogPage() {
       <Container>
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-sm text-foreground-secondary hover:text-foreground transition-colors mb-12"
+          className="inline-flex items-center gap-2 text-sm text-foreground-secondary hover:text-foreground transition-colors mb-8 md:mb-12"
         >
           <ArrowLeft size={16} />
           Back to Home
         </Link>
 
-        <h1 className="text-3xl font-bold text-foreground mb-16 animate-fade-in">
+        <h1 className="text-2xl md:text-3xl font-bold text-foreground mb-10 md:mb-16 animate-fade-in">
           All Posts
         </h1>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {posts.map((post, index) => (
             <Link
               key={post.slug}

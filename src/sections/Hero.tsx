@@ -12,16 +12,17 @@ export function Hero() {
     <Section className="pt-12 pb-8">
       <Container>
         {/* Heading */}
-        <h1 className="text-6xl md:text-7xl font-bold md:leading-20.5 mb-8 animate-fade-in-up">
-          <span className="text-foreground">I Build </span>
+        <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold leading-[55px] md:leading-20.5 mb-6 md:mb-8 animate-fade-in-up">
+          <span className="text-foreground-tertiary">I Build </span>
+          {/* <br /> */}
           <br className="block md:hidden" />
           <RotatingText
             words={rotatingWords}
-            className="text-foreground-tertiary"
+            className="text-foreground"
           />
           <br />
           <span className="text-foreground-tertiary">that Feel </span>
-          <span className="text-foreground">Alive</span>
+          <span className="text-foreground-tertiary">Alive</span>
         </h1>
 
         {/* Profile Section */}
@@ -67,12 +68,12 @@ export function Hero() {
 
           {/* Description & CTA */}
           <div className="flex flex-col gap-4 animate-fade-in-up stagger-2">
-            <p className="max-w-[672px] text-base leading-[26px] text-foreground-secondary">
+            <p className="max-w-[460px] text-base leading-[26px] text-foreground-secondary">
               {site.bio.full}
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex items-center gap-4 pt-4">
+            <div className="flex flex-wrap items-center gap-3 md:gap-4 pt-4">
               <a href={`mailto:${site.email}`}>
                 <Button
                   variant="primary"
