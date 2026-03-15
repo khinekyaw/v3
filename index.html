@@ -4,55 +4,90 @@
     <meta charset="UTF-8" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/pacman.svg" />
-    <link rel="apple-touch-icon" href="/images/og.webp" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/icons/apple-touch-icon-180x180.png"
+    />
 
     <!-- Preload self-hosted font to eliminate critical chain -->
-    <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <link
+      rel="preload"
+      href="/fonts/inter-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#FDFDFD" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#09090B" media="(prefers-color-scheme: dark)" />
+    <meta
+      name="theme-color"
+      content="#FDFDFD"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#09090B"
+      media="(prefers-color-scheme: dark)"
+    />
     <meta name="author" content="Khine Kyaw Tun" />
     <meta name="robots" content="index, follow" />
 
     <title>Khine Kyaw Tun — Software Engineer</title>
-    <meta name="description" content="Software engineer building engaging web experiences with React, Next.js & TypeScript. Based in Bangkok, Thailand." />
+    <meta
+      name="description"
+      content="Software engineer building engaging web experiences with React, Next.js & TypeScript. Based in Bangkok, Thailand."
+    />
     <link rel="canonical" href="https://khinekyaw.dev/" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://khinekyaw.dev/" />
     <meta property="og:title" content="Khine Kyaw Tun — Software Engineer" />
-    <meta property="og:description" content="Software engineer building engaging web experiences with React, Next.js & TypeScript." />
+    <meta
+      property="og:description"
+      content="Software engineer building engaging web experiences with React, Next.js & TypeScript."
+    />
     <meta property="og:image" content="https://khinekyaw.dev/images/og.png" />
     <meta property="og:site_name" content="Khine Kyaw Tun" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Khine Kyaw Tun — Software Engineer" />
-    <meta name="twitter:description" content="Software engineer building engaging web experiences with React, Next.js & TypeScript." />
+    <meta
+      name="twitter:description"
+      content="Software engineer building engaging web experiences with React, Next.js & TypeScript."
+    />
     <meta name="twitter:image" content="https://khinekyaw.dev/images/og.png" />
 
     <!-- Structured Data -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Khine Kyaw Tun",
-      "url": "https://khinekyaw.dev",
-      "jobTitle": "Software Engineer",
-      "sameAs": [
-        "https://linkedin.com/in/khinekyaw",
-        "https://github.com/khinekyaw"
-      ]
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Khine Kyaw Tun",
+        "url": "https://khinekyaw.dev",
+        "jobTitle": "Software Engineer",
+        "sameAs": [
+          "https://linkedin.com/in/khinekyaw",
+          "https://github.com/khinekyaw"
+        ]
+      }
     </script>
   </head>
   <body>
     <!-- Prevent dark-mode flash (runs before React) -->
     <script>
-      (function(){var t=localStorage.getItem('theme');if(t==='dark'||((!t)&&matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}})()
+      ;(function () {
+        var t = localStorage.getItem("theme")
+        if (
+          t === "dark" ||
+          (!t && matchMedia("(prefers-color-scheme:dark)").matches)
+        ) {
+          document.documentElement.classList.add("dark")
+        }
+      })()
     </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
