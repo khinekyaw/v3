@@ -7,7 +7,7 @@ export const site = {
   avatar: '/images/kkt.webp',
   bio: {
     highlighted: ['React, Next.js & TypeScript', 'scalable UI systems', 'sports streaming, automotive & AI'],
-    full: 'I enjoy creating engaging web experiences and exploring new technologies.',
+    full: 'I craft web experiences where design, performance, and code work seamlessly together.',
   },
   social: {
     linkedin: 'https://linkedin.com/in/khinekyaw',
