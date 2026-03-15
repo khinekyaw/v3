@@ -13,6 +13,8 @@ import { ProjectDetailPage } from "./pages/ProjectDetailPage"
 import { BlogPage } from "./pages/BlogPage"
 import { BlogDetailPage } from "./pages/BlogDetailPage"
 import { NotFoundPage } from "./pages/NotFoundPage"
+import { PacmanCurtain } from "./components/PacmanCurtain"
+import { useThemeProvider, ThemeContext } from "./hooks/useTheme"
 
 function AppLayout() {
   return (
@@ -34,24 +36,37 @@ function HomePage() {
 }
 
 function App() {
+  const themeCtx = useThemeProvider()
+
   return (
-    <BrowserRouter>
-      <CustomCursor />
-      <div className="min-h-screen bg-background relative">
-        <div className="relative z-10">
-          <Routes>
-            <Route element={<AppLayout />}>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/projects" element={<ProjectsPage />} />
-              <Route path="/projects/:slug" element={<ProjectDetailPage />} />
-              <Route path="/blog" element={<BlogPage />} />
-              <Route path="/blog/:slug" element={<BlogDetailPage />} />
-              <Route path="*" element={<NotFoundPage />} />
-            </Route>
-          </Routes>
+    <ThemeContext.Provider value={themeCtx}>
+      <BrowserRouter>
+        <CustomCursor />
+        <div className="min-h-screen bg-background relative">
+          <div className="relative z-10">
+            <Routes>
+              <Route element={<AppLayout />}>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/projects" element={<ProjectsPage />} />
+                <Route path="/projects/:slug" element={<ProjectDetailPage />} />
+                <Route path="/blog" element={<BlogPage />} />
+                <Route path="/blog/:slug" element={<BlogDetailPage />} />
+                <Route path="*" element={<NotFoundPage />} />
+              </Route>
+            </Routes>
+          </div>
         </div>
-      </div>
-    </BrowserRouter>
+
+        {themeCtx.themeSwitching && (
+          <PacmanCurtain
+            key={themeCtx.switchCount}
+            inverted
+            onCovered={themeCtx.onThemeCovered}
+            onDone={themeCtx.onThemeDone}
+          />
+        )}
+      </BrowserRouter>
+    </ThemeContext.Provider>
   )
 }
 

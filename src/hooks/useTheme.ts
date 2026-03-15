@@ -1,8 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, createContext, useContext } from 'react';
 
 type Theme = 'light' | 'dark';
 
-export function useTheme() {
+interface ThemeContextValue {
+  theme: Theme;
+  toggleTheme: () => void;
+  themeSwitching: boolean;
+  onThemeCovered: () => void;
+  onThemeDone: () => void;
+}
+
+const ThemeContext = createContext<ThemeContextValue | null>(null);
+
+export function useThemeProvider() {
   const [theme, setTheme] = useState<Theme>(() => {
     if (typeof window !== 'undefined') {
       const stored = localStorage.getItem('theme') as Theme | null;
@@ -11,6 +21,9 @@ export function useTheme() {
     }
     return 'light';
   });
+
+  const [themeSwitching, setThemeSwitching] = useState(false);
+  const [switchCount, setSwitchCount] = useState(0);
 
   useEffect(() => {
     const root = document.documentElement;
@@ -22,9 +35,39 @@ export function useTheme() {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  const toggleTheme = () => {
-    setTheme(prev => prev === 'light' ? 'dark' : 'light');
-  };
+  const toggleTheme = useCallback(() => {
+    if (themeSwitching) return;
+    setThemeSwitching(true);
+    setSwitchCount(c => c + 1);
+  }, [themeSwitching]);
 
-  return { theme, toggleTheme };
+  const onThemeCovered = useCallback(() => {
+    // Disable CSS background/border transitions so the swap is instant
+    const style = document.createElement('style');
+    style.textContent = '*, *::before, *::after { transition-duration: 0s !important; }';
+    document.head.appendChild(style);
+
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+
+    // Re-enable after a frame so the new colors are already painted
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        style.remove();
+      });
+    });
+  }, []);
+
+  const onThemeDone = useCallback(() => {
+    setThemeSwitching(false);
+  }, []);
+
+  return { theme, toggleTheme, themeSwitching, switchCount, onThemeCovered, onThemeDone };
+}
+
+export { ThemeContext };
+
+export function useTheme() {
+  const ctx = useContext(ThemeContext);
+  if (!ctx) throw new Error('useTheme must be used within ThemeProvider');
+  return ctx;
 }

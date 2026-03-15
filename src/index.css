@@ -95,15 +95,15 @@
 
 .dark {
   /* Dark mode */
-  --foreground: #FAFAFA;
+  --foreground: #FDFDFD;
   --foreground-secondary: #A1A1AA;
   --foreground-tertiary: #71717A;
 
-  --background: #09090B;
+  --background: #18181B;
   --background-muted: #18181B;
   --background-secondary: #27272A;
 
-  --primary: #FAFAFA;
+  --primary: #FDFDFD;
   --primary-foreground: #18181B;
 
   --secondary: #27272A;
