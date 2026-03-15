@@ -2,7 +2,7 @@ export const site = {
   name: 'Khine Kyaw Tun',
   role: 'Software Engineer',
   location: 'Bangkok, Thailand',
-  email: 'thekhinekyaw@gmail.com',
+  email: 'hello@khinekyaw.com',
   phone: '+66 0660122240',
   avatar: '/images/kkt.webp',
   bio: {

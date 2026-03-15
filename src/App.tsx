@@ -15,6 +15,7 @@ import { BlogDetailPage } from "./pages/BlogDetailPage"
 import { NotFoundPage } from "./pages/NotFoundPage"
 import { PacmanCurtain } from "./components/PacmanCurtain"
 import { useThemeProvider, ThemeContext } from "./hooks/useTheme"
+import { Analytics } from "@vercel/analytics/react"
 
 function AppLayout() {
   return (
@@ -66,6 +67,7 @@ function App() {
           />
         )}
       </BrowserRouter>
+      <Analytics />
     </ThemeContext.Provider>
   )
 }

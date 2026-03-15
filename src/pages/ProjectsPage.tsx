@@ -1,8 +1,12 @@
-import { ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { Container, Section, SectionHeader } from '../components/layout';
-import { ProjectCard } from '../components/ProjectCard';
-import { professionalProjects, experimentProjects, type Project } from '../data/projects';
+import { ArrowLeft } from "lucide-react"
+import { Link } from "react-router-dom"
+import { Container, Section, SectionHeader } from "../components/layout"
+import { ProjectCard } from "../components/ProjectCard"
+import {
+  professionalProjects,
+  experimentProjects,
+  type Project,
+} from "../data/projects"
 
 function ProjectGrid({ projects }: { projects: Project[] }) {
   return (
@@ -23,12 +27,12 @@ function ProjectGrid({ projects }: { projects: Project[] }) {
         </Link>
       ))}
     </div>
-  );
+  )
 }
 
 export function ProjectsPage() {
   return (
-    <Section className='py-10'>
+    <Section>
       <Container>
         <Link
           to="/"
@@ -48,12 +52,15 @@ export function ProjectsPage() {
             <ProjectGrid projects={professionalProjects} />
           </div>
 
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <div
+            className="animate-fade-in-up"
+            style={{ animationDelay: "0.2s" }}
+          >
             <SectionHeader title="Experiments" />
             <ProjectGrid projects={experimentProjects} />
           </div>
         </div>
       </Container>
     </Section>
-  );
+  )
 }

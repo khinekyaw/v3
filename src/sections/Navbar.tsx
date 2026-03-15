@@ -76,7 +76,7 @@ export function Navbar() {
           {/* Right Side */}
           <div className="flex items-center gap-4">
             <a
-              href="mailto:thekhinekyaw@gmail.com"
+              href="mailto:hello@khinekyaw.com"
               className="hidden sm:flex px-4 py-2 rounded-full border border-border items-center gap-2 hover:bg-secondary hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
             >
               <span className="text-sm font-medium text-foreground">
@@ -142,7 +142,7 @@ export function Navbar() {
               </RouterLink>
             ))}
             <a
-              href="mailto:thekhinekyaw@gmail.com"
+              href="mailto:hello@khinekyaw.com"
               className={`sm:hidden px-3 py-2.5 rounded-lg text-sm text-foreground-secondary hover:text-foreground hover:bg-secondary transition-all duration-300 flex items-center gap-2 ${
                 mobileOpen
                   ? "opacity-100 translate-y-0"
