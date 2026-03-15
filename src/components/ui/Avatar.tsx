@@ -1,4 +1,5 @@
 import { cn } from '../../lib/utils';
+import { Image } from './Image';
 
 interface AvatarProps {
   src?: string;
@@ -19,7 +20,7 @@ export function Avatar({ src, alt = '', size = 'md', className }: AvatarProps) {
       className={cn(sizes[size], 'rounded-full bg-white border border-border overflow-hidden flex items-center justify-center', className)}
     >
       {src ? (
-        <img src={src} alt={alt} className="w-full h-full object-cover" />
+        <Image src={src} alt={alt} className="w-full h-full object-cover" />
       ) : (
         <span className="text-foreground-tertiary text-sm">Avatar</span>
       )}

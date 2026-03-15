@@ -2,6 +2,7 @@ import { ArrowLeft, Link as LinkIcon } from "lucide-react"
 import { Link, useParams, Navigate } from "react-router-dom"
 import { Container, Section } from "../components/layout"
 import { RichText } from "../components/RichText"
+import { Image } from "../components/ui/Image"
 import { VideoPlayer } from "../components/VideoPlayer"
 import { allProjects } from "../data/projects"
 
@@ -30,10 +31,10 @@ export function ProjectDetailPage() {
             {project.video ? (
               <VideoPlayer src={project.video} className="w-full h-full" />
             ) : project.image ? (
-              <img
+              <Image
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover relative"
+                className="w-full h-full object-cover"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center">

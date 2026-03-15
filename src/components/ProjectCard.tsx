@@ -1,4 +1,5 @@
 import { Link as LinkIcon } from 'lucide-react';
+import { Image } from './ui/Image';
 
 interface ProjectCardProps {
   logo?: string;
@@ -13,7 +14,7 @@ export function ProjectCard({ logo, title, description, links }: ProjectCardProp
       {/* Logo */}
       <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-lg overflow-hidden flex items-center justify-center">
         {logo ? (
-          <img src={logo} alt={title} className="w-full h-full object-cover" />
+          <Image src={logo} alt={title} className="w-full h-full object-cover" />
         ) : (
           <span className="text-xs text-foreground-tertiary">Logo</span>
         )}
