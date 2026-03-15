@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://khinekyaw.dev/sitemap.xml
+Sitemap: https://khinekyaw.com/sitemap.xml
