@@ -94,7 +94,7 @@ export const experimentProjects: Project[] = [
       "My first attempt at building a fully local voice assistant, everything runs on your own machine. Say a wake word, talk to it, and it talks back. Simple as that.\n\nIt uses Faster Whisper for speech-to-text, a small local language model (Qwen3-1.7B) to generate responses, and Kokoro-82M to speak them out loud. The whole pipeline stays on-device, so nothing leaves your computer.\n\n## How It Works\n\n- **Wake word detection** — always listening for the trigger phrase, then starts recording\n- **Voice activity detection** — knows when you've stopped talking so it can respond\n- **Streaming responses** — starts generating and speaking before the full response is ready, so it feels snappy\n- **Conversation memory** — remembers what you said earlier in the conversation\n- **Auto sleep** — goes quiet after a period of inactivity\n\nThis was mostly a learning project to explore how far you can push local-only AI.",
     logo: "/images/projects/agent-zero-logo.webp",
     image: "/images/projects/agent-zero-demo.webp",
-    links: [{ label: "GITHUB", href: "#" }],
+    links: [],
   },
   {
     slug: "portfolio-v3",
@@ -104,7 +104,7 @@ export const experimentProjects: Project[] = [
     summary: "This website, vibe coded with Claude Code.",
     description:
       "My personal portfolio website, fully vibe coded with Claude Code. I fed it the Figma design and let it do the heavy lifting. Built with React, Tailwind CSS, and a lot of AI-assisted back and forth.\n\nUI design inspired by [SimpFolio by Hisyam Akbar](https://dribbble.com/shots/26490004-Minimalist-Personal-Site-SimpFolio) on Dribbble.\n\nBuilt with Claude Code.",
-    links: [{ label: "GITHUB", href: "#" }],
+    links: [{ label: "GITHUB", href: "https://github.com/khinekyaw/v3" }],
   },
   {
     slug: "text-styles-to-tailwind-css",
