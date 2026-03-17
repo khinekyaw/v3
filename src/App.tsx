@@ -15,9 +15,12 @@ import { BlogDetailPage } from "./pages/BlogDetailPage"
 import { NotFoundPage } from "./pages/NotFoundPage"
 import { PacmanCurtain } from "./components/PacmanCurtain"
 import { useThemeProvider, ThemeContext } from "./hooks/useTheme"
+import { useCanonical } from "./hooks/useCanonical"
 import { Analytics } from "@vercel/analytics/react"
 
 function AppLayout() {
+  useCanonical()
+
   return (
     <Layout>
       <AnimatedOutlet />

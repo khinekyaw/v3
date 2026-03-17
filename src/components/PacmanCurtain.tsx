@@ -22,7 +22,6 @@ export function PacmanCurtain({
   const colors = useMemo(() => {
     const fg = getComputedColor("--color-primary")
     const bg = getComputedColor("--color-background")
-    console.log(":", fg, bg)
     return {
       curtain: inverted ? fg : bg,
       pacman: inverted ? bg : fg,
