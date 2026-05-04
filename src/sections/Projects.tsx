@@ -7,9 +7,9 @@ const featuredSlugs = [
   "renonation",
   "suzuki-myanmar-motor",
   "chit-maymay",
+  "foundry",
   "arisa",
   "agent-zero",
-  "text-styles-to-tailwind-css",
 ]
 const featured = featuredSlugs
   .map((slug) => allProjects.find((p) => p.slug === slug)!)

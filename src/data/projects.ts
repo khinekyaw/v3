@@ -77,6 +77,16 @@ export const professionalProjects: Project[] = [
 
 export const experimentProjects: Project[] = [
   {
+    slug: "foundry",
+    title: "Foundry",
+    summary: "Local design tool for building pages and systems.",
+    description:
+      "A local design tool for shaping web interfaces from rough ideas into polished pages. Foundry brings pages, reusable components, typography, and design tokens into one focused workspace, so it is easier to explore ideas and keep the final design consistent.\n\n## How It Works\n\nYou create pages inside a local project, build reusable components, and define visual styles like colors, spacing, and typography. Foundry renders everything into a live preview, so changes to components or tokens can be seen across the design right away.\n\n## Key Features\n\n- **Local-first projects** — design work stays on your machine\n- **Reusable components** — create once, place across multiple pages\n- **Design tokens** — manage colors, spacing, and typography from one system\n- **Live preview** — see page and style changes as you refine the interface\n- **Agent-friendly workflow** — built with tools that make it easier for AI coding agents to understand and update projects",
+    logo: "/images/projects/foundry-logo.webp",
+    video: "/images/projects/foundry-demo.webm",
+    links: [],
+  },
+  {
     slug: "arisa",
     title: "Arisa",
     summary: "Interactive 3D AI companion.",

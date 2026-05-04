@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from 'react';
-import { Volume2, VolumeOff } from 'lucide-react';
+import { Maximize2, Minimize2, Volume2, VolumeOff } from 'lucide-react';
 
 interface VideoPlayerProps {
   src: string;
@@ -7,9 +7,11 @@ interface VideoPlayerProps {
 }
 
 export function VideoPlayer({ src, className = '' }: VideoPlayerProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(true);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -23,6 +25,17 @@ export function VideoPlayer({ src, className = '' }: VideoPlayerProps) {
     return () => {
       video.removeEventListener('play', onPlay);
       video.removeEventListener('pause', onPause);
+    };
+  }, []);
+
+  useEffect(() => {
+    const onFullscreenChange = () => {
+      setIsFullscreen(document.fullscreenElement === containerRef.current);
+    };
+
+    document.addEventListener('fullscreenchange', onFullscreenChange);
+    return () => {
+      document.removeEventListener('fullscreenchange', onFullscreenChange);
     };
   }, []);
 
@@ -44,8 +57,21 @@ export function VideoPlayer({ src, className = '' }: VideoPlayerProps) {
     setIsMuted(!isMuted);
   };
 
+  const toggleFullscreen = async (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const container = containerRef.current;
+    if (!container) return;
+
+    if (document.fullscreenElement === container) {
+      await document.exitFullscreen();
+    } else {
+      await container.requestFullscreen();
+    }
+  };
+
   return (
     <div
+      ref={containerRef}
       className={`relative group cursor-pointer ${className}`}
       onClick={togglePlay}
     >
@@ -79,17 +105,25 @@ export function VideoPlayer({ src, className = '' }: VideoPlayerProps) {
         </div>
       </div>
 
-      {/* Mute/unmute button */}
-      <button
-        onClick={toggleMute}
-        className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-black/70"
-      >
-        {isMuted ? (
-          <VolumeOff size={14} className="text-white" />
-        ) : (
-          <Volume2 size={14} className="text-white" />
-        )}
-      </button>
+      <div className="absolute bottom-3 right-3 flex items-center gap-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200">
+        <button
+          type="button"
+          onClick={toggleMute}
+          aria-label={isMuted ? 'Unmute video' : 'Mute video'}
+          className="w-9 h-9 rounded-full bg-background/90 text-foreground shadow-lg backdrop-blur-sm flex items-center justify-center transition-all hover:bg-white"
+        >
+          {isMuted ? <VolumeOff size={16} /> : <Volume2 size={16} />}
+        </button>
+
+        <button
+          type="button"
+          onClick={toggleFullscreen}
+          aria-label={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
+          className="w-9 h-9 rounded-full bg-background/90 text-foreground shadow-lg backdrop-blur-sm flex items-center justify-center transition-all hover:bg-white"
+        >
+          {isFullscreen ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
+        </button>
+      </div>
     </div>
   );
 }

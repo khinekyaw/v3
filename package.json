@@ -8,6 +8,7 @@
     "build": "tsc -b && vite build",
     "build:analyze": "tsc -b && vite build --mode analyze",
     "optimize": "npx vite-bundle-visualizer",
+    "optimize:images": "node scripts/optimize-images.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
