@@ -1,50 +1,38 @@
-import { Link } from "react-router-dom"
-import { Container, Section } from "../components/layout"
-import { ProjectCard } from "../components/ProjectCard"
-import { allProjects } from "../data/projects"
-
-const featuredSlugs = [
-  "renonation",
-  "suzuki-myanmar-motor",
-  "chit-maymay",
-  "foundry",
-  "arisa",
-  "agent-zero",
-]
-const featured = featuredSlugs
-  .map((slug) => allProjects.find((p) => p.slug === slug)!)
-  .filter(Boolean)
+import { Link } from "react-router"
+import { Container, Section, SectionHeader } from "../components/layout"
+import { LevelCard } from "../components/LevelCard"
+import { professionalProjects } from "../data/projects"
+import { LEVEL_COLORS } from "../lib/colors"
+import { cn } from "../lib/utils"
 
 export function Projects() {
   return (
-    <Section id="projects">
+    <Section id="work" labelledBy="work-title">
       <Container>
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-xl font-semibold text-foreground">Projects</h2>
-          <Link
-            to="/projects"
-            className="text-foreground-secondary hover:text-foreground text-sm transition-colors cursor-pointer flex items-center gap-1"
-          >
-            See More Projects
-            <span>&rarr;</span>
-          </Link>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {featured.map((project, index) => (
-            <Link
+        <SectionHeader
+          id="work-title"
+          kicker="Stage 01 — Work"
+          title="WORK"
+          color="orange"
+          meta={
+            <>
+              <span>Select a level ▸</span>
+              <span>{String(professionalProjects.length).padStart(2, "0")} shipped</span>
+              <Link to="/projects" className="text-foreground underline decoration-2 underline-offset-4 hover:text-pixel-orange">
+                All levels →
+              </Link>
+            </>
+          }
+        />
+        <div className="grid items-start gap-[clamp(20px,2.4vw,36px)] md:grid-cols-2 lg:grid-cols-3">
+          {professionalProjects.map((project, i) => (
+            <LevelCard
               key={project.slug}
-              to={`/projects/${project.slug}`}
-              className="animate-scale-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <ProjectCard
-                logo={project.logo}
-                title={project.title}
-                description={project.summary}
-                links={project.links}
-              />
-            </Link>
+              project={project}
+              level={`LVL ${String(i + 1).padStart(2, "0")}`}
+              color={LEVEL_COLORS[i % LEVEL_COLORS.length]}
+              className={cn(i % 3 === 1 && "lg:mt-[72px]")}
+            />
           ))}
         </div>
       </Container>

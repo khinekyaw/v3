@@ -1,23 +1,17 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-@font-face {
-  font-family: "Inter";
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url("/fonts/inter-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
+@custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
+@theme static {
   /* Override default colors */
   --color-*: initial;
 
   /* Font */
-  --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-sans: "Space Grotesk Variable", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-pixel: "Silkscreen", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  /* Light mode colors (default) */
+  /* Semantic colors */
   --color-foreground: var(--foreground);
   --color-foreground-secondary: var(--foreground-secondary);
   --color-foreground-tertiary: var(--foreground-tertiary);
@@ -44,338 +38,405 @@
   --color-card: var(--card);
   --color-card-hover: var(--card-hover);
 
-  /* Spacing */
-  --container-max: 1200px;
-  --section-py: 5rem;
+  /* Pixel palette (same in both themes) */
+  --color-pixel-blue: var(--pixel-blue);
+  --color-pixel-purple: var(--pixel-purple);
+  --color-pixel-orange: var(--pixel-orange);
+  --color-pixel-magenta: var(--pixel-magenta);
+  --color-pixel-yellow: var(--pixel-yellow);
+  --color-glow: var(--glow);
+  --color-glow-core: var(--glow-core);
 
-  /* Border Radius */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-full: 9999px;
+  /* Dot grid behind everything */
+  --color-dot: var(--dot);
+
+  /* Always-dark panels (ticker, contact, footer) */
+  --color-night: var(--night);
+  --color-night-foreground: var(--night-foreground);
+  --color-night-muted: var(--night-muted);
+  --color-night-border: var(--night-border);
+  --color-night-dot: var(--night-dot);
 
   /* Animations */
-  --animate-fade-in: fade-in 0.5s ease-out;
-  --animate-fade-in-up: fade-in-up 0.5s ease-out;
-  --animate-fade-in-down: fade-in-down 0.5s ease-out;
-  --animate-scale-in: scale-in 0.3s ease-out;
-  --animate-slide-in-left: slide-in-left 0.4s ease-out;
-  --animate-slide-in-right: slide-in-right 0.4s ease-out;
-  --animate-pulse-soft: pulse-soft 2s ease-in-out infinite;
+  --animate-blink: blink 1s linear infinite;
+  --animate-bob: bob 1s linear infinite;
+  --animate-sprite-bob: sprite-bob 1.6s steps(1, end) infinite;
+  --animate-coin: coin-spin 1.2s steps(1, end) infinite;
+  --animate-marquee: marquee 42s linear infinite;
+  --animate-march: march 2.4s steps(4) infinite alternate;
+  --animate-shake: shake 0.32s steps(2) 2;
+  --animate-pop: pop 0.25s steps(3) both;
+  --animate-drop-in: drop-in 0.45s steps(4) both;
+  --animate-rise-in: rise-in 0.4s steps(4) both;
+  --animate-hop: hop 1.8s steps(1, end) infinite;
+  --animate-jitter: jitter 0.3s steps(2) infinite;
+  --animate-stripe: stripe 1.6s steps(4) infinite;
+  --animate-beam-v: beam-v 2.4s ease-in-out infinite;
+  --animate-beam-h: beam-h 2.4s ease-in-out infinite;
+  --animate-star-glow: star-glow 2.4s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes bob {
+  0%, 49% { translate: 0 0; }
+  50%, 100% { translate: 0 -5px; }
+}
+@keyframes sprite-bob {
+  0%, 49% { translate: 0 0; }
+  50%, 100% { translate: 0 calc(var(--c, 24px) * -0.25); }
+}
+@keyframes coin-spin {
+  0% { scale: 1 1; }
+  25% { scale: 0.55 1; }
+  50% { scale: 0.15 1; }
+  75% { scale: 0.55 1; }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes march {
+  from { translate: 0 0; }
+  to { translate: 96px 0; }
+}
+@keyframes shake {
+  0% { translate: 0 0; }
+  50% { translate: 2px -2px; }
+  100% { translate: -2px 1px; }
+}
+@keyframes pop {
+  from { scale: 0; }
+  to { scale: 1; }
+}
+/* Separate name from pop so switching to it restarts the animation */
+@keyframes unpop {
+  from { scale: 1; }
+  to { scale: 0; }
+}
+@keyframes drop-in {
+  from { opacity: 0; translate: 0 -60px; }
+  to { opacity: 1; translate: 0 0; }
+}
+@keyframes rise-in {
+  from { opacity: 0; translate: 0 24px; }
+  to { opacity: 1; translate: 0 0; }
+}
+@keyframes hop {
+  0%, 9% { translate: 0 0; }
+  10%, 19% { translate: 0 calc(var(--s, 8px) * -1.5); }
+  20%, 100% { translate: 0 0; }
+}
+@keyframes jitter {
+  0% { translate: 0 0; }
+  50% { translate: 3px -3px; }
+}
+@keyframes stripe {
+  from { background-position: 0 0; }
+  to { background-position: 48px 0; }
+}
+@keyframes scan {
+  from { translate: 0 0; }
+  to { translate: 0 var(--scan-distance, 0); }
+}
+@keyframes beam-v {
+  0%, 100% { scale: 1 1; opacity: 0.7; }
+  50% { scale: 2.2 1; opacity: 1; }
+}
+@keyframes beam-h {
+  0%, 100% { scale: 1 1; opacity: 0.7; }
+  50% { scale: 1 2.2; opacity: 1; }
+}
+@keyframes star-glow {
+  0%, 100% { opacity: 0.6; filter: brightness(0.9); }
+  50% { opacity: 1; filter: brightness(1.35); }
 }
 
 :root {
   /* Light mode */
-  --foreground: #2A2A2A;
-  --foreground-secondary: #575757;
-  --foreground-tertiary: #A1A1AA;
+  --foreground: #121216;
+  --foreground-secondary: #50516A;
+  --foreground-tertiary: #75768C;
 
-  --background: #FDFDFD;
-  --background-muted: #FAFAFA;
-  --background-secondary: #F4F4F5;
+  --background: #E7E7EE;
+  --background-muted: #EDEDF2;
+  --background-secondary: #DCDCE4;
 
-  --primary: #18181B;
-  --primary-foreground: #FFFFFF;
+  --primary: #121216;
+  --primary-foreground: #E7E7EE;
 
-  --secondary: #F4F4F5;
-  --secondary-foreground: #18181B;
+  --secondary: #DCDCE4;
+  --secondary-foreground: #121216;
 
-  --border: #E4E4E7;
-  --border-light: #F4F4F5;
+  --border: #121216;
+  --border-light: #C3C4D0;
 
-  --accent: #EF4444;
-  --accent-foreground: #FFFFFF;
+  --accent: #FF8B1E;
+  --accent-foreground: #121216;
 
   --success: #4ADE80;
-  --success-foreground: #FFFFFF;
+  --success-foreground: #121216;
 
-  --card: #FFFFFF;
-  --card-hover: #FAFAFA;
+  --card: #F6F6F9;
+  --card-hover: #FFFFFF;
+
+  --pixel-blue: #2D8CF0;
+  --pixel-purple: #7B4AE2;
+  --pixel-orange: #FF8B1E;
+  --pixel-magenta: #DA4DB6;
+  --pixel-yellow: #F7E06A;
+  --glow: #FF5B1F;
+  --glow-core: #FFC08F;
+
+  --dot: #B9BAC8;
+
+  --night: #121216;
+  --night-foreground: #E7E7EE;
+  --night-muted: #9C9DB0;
+  --night-border: #34354A;
+  --night-dot: #2E2F3A;
 }
 
 .dark {
   /* Dark mode */
-  --foreground: #FDFDFD;
-  --foreground-secondary: #A1A1AA;
-  --foreground-tertiary: #71717A;
+  --foreground: #E7E7EE;
+  --foreground-secondary: #A4A5B8;
+  --foreground-tertiary: #6E6F84;
 
-  --background: #18181B;
-  --background-muted: #18181B;
-  --background-secondary: #27272A;
+  --background: #17171C;
+  --background-muted: #1B1B21;
+  --background-secondary: #23232B;
 
-  --primary: #FDFDFD;
-  --primary-foreground: #18181B;
+  --primary: #E7E7EE;
+  --primary-foreground: #121216;
 
-  --secondary: #27272A;
-  --secondary-foreground: #FAFAFA;
+  --secondary: #23232B;
+  --secondary-foreground: #E7E7EE;
 
-  --border: #27272A;
-  --border-light: #18181B;
+  --border: #E7E7EE;
+  --border-light: #3A3B50;
 
-  --accent: #EF4444;
-  --accent-foreground: #FFFFFF;
+  --card: #1D1D24;
+  --card-hover: #24242C;
 
-  --success: #4ADE80;
-  --success-foreground: #18181B;
+  --dot: #30313D;
 
-  --card: #18181B;
-  --card-hover: #27272A;
+  --night: #0C0C10;
+  --night-dot: #24252F;
 }
 
-/* Keyframes */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fade-in-down {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes scale-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes slide-in-left {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slide-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes pulse-soft {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.7;
-  }
-}
-
-@keyframes twinkle {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.2);
-  }
-}
-
-@keyframes shooting {
-  0% {
-    transform: translateX(0) translateY(0) rotate(45deg);
-    opacity: 1;
-  }
-  70% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(300px) translateY(300px) rotate(45deg);
-    opacity: 0;
-  }
-}
-
-@keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 2px rgba(255, 255, 255, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6), 0 0 12px rgba(255, 255, 255, 0.3);
-  }
+html {
+  scroll-padding-top: 96px;
+  scroll-behavior: smooth;
 }
 
 body {
   font-family: var(--font-sans);
   font-weight: 400;
   background-color: var(--color-background);
+  background-image: radial-gradient(circle, var(--color-dot) 1.1px, transparent 1.5px);
+  background-size: 12px 12px;
   color: var(--color-foreground);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Smooth transitions for theme switching */
-*,
-*::before,
-*::after {
-  transition-property: background-color, border-color;
-  transition-duration: 200ms;
-  transition-timing-function: ease-out;
+::selection {
+  background-color: var(--color-pixel-yellow);
+  color: var(--night);
 }
 
-/* Disable transitions for animations */
-[class*="animate-"] {
-  transition: none;
+:focus-visible {
+  outline: 3px solid var(--color-pixel-orange);
+  outline-offset: 3px;
 }
 
-/* Interactive element transitions */
-a,
-button {
-  transition: all 200ms ease-out;
-  @apply focus-visible:outline-foreground-secondary;
+/* Pixel cursors, drawn by scripts/generate-cursors.mjs */
+html {
+  cursor: url("/cursors/arrow.svg") 1 1, url("/cursors/arrow.png") 1 1, auto;
+}
+html.dark {
+  cursor: url("/cursors/arrow-dark.svg") 1 1, url("/cursors/arrow-dark.png") 1 1, auto;
+}
+:is(a[href], button, label, summary, select, [role="button"], .cursor-pixel-pointer) {
+  cursor: url("/cursors/pointer.svg") 1 1, url("/cursors/pointer.png") 1 1, pointer;
+}
+.dark :is(a[href], button, label, summary, select, [role="button"], .cursor-pixel-pointer) {
+  cursor: url("/cursors/pointer-dark.svg") 1 1, url("/cursors/pointer-dark.png") 1 1, pointer;
+}
+:is(button, input, select):disabled {
+  cursor: not-allowed;
 }
 
-button {
-  @apply cursor-pointer;
-}
+@layer components {
+  /* Hard-shadow pixel button */
+  .px-btn {
+    @apply inline-flex min-h-11 items-center gap-2.5 border-[3px] border-border bg-background px-4.5 font-pixel text-[13px] uppercase text-foreground no-underline;
+    box-shadow: 4px 4px 0 var(--color-border);
+    transition: translate 0.08s steps(2), box-shadow 0.08s steps(2);
+  }
+  .px-btn:hover {
+    translate: -2px -2px;
+    box-shadow: 6px 6px 0 var(--color-border);
+  }
+  .px-btn:active {
+    translate: 4px 4px;
+    box-shadow: 0 0 0 var(--color-border);
+  }
+  .px-btn-primary {
+    @apply bg-night text-pixel-orange;
+    box-shadow: 4px 4px 0 var(--color-pixel-orange);
+  }
+  .px-btn-primary:hover {
+    box-shadow: 6px 6px 0 var(--color-pixel-orange);
+  }
+  .px-btn-night {
+    @apply border-night-foreground bg-night text-night-foreground;
+    box-shadow: 4px 4px 0 var(--color-night-foreground);
+  }
+  .px-btn-night:hover {
+    @apply text-pixel-yellow;
+    box-shadow: 6px 6px 0 var(--color-night-foreground);
+  }
 
-/* Hover lift effect for cards */
-.hover-lift {
-  transition: transform 300ms ease-out, box-shadow 300ms ease-out;
-}
+  /* Hard-shadow card */
+  .px-card {
+    @apply border-[3px] border-border bg-card;
+    box-shadow: 8px 8px 0 var(--color-border);
+    /* transform (not translate) so the hover lift never fights the scroll reveal */
+    transition: transform 0.1s steps(2), box-shadow 0.1s steps(2);
+  }
+  a.px-card:hover,
+  a.px-card:focus-visible {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0 var(--color-border);
+  }
 
-.hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.1);
-}
+  .dot-grid {
+    background-image: radial-gradient(circle, var(--color-dot) 1.1px, transparent 1.5px);
+    background-size: 12px 12px;
+  }
+  .dot-grid-night {
+    background-image: radial-gradient(circle, var(--color-night-dot) 1.1px, transparent 1.5px);
+    background-size: 12px 12px;
+  }
+  .dot-grid-ink {
+    background-image: radial-gradient(circle, color-mix(in srgb, var(--night) 22%, transparent) 1.1px, transparent 1.5px);
+    background-size: 10px 10px;
+  }
 
-.dark .hover-lift:hover {
-  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.4);
-}
+  /* Logo cells: drop in, then a yellow glint sweeps across */
+  .glint-cell {
+    fill: var(--col);
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: pop 0.25s steps(3) both, glint 3.6s steps(1, end) infinite;
+  }
 
-/* Stagger animation delays */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
-.stagger-6 { animation-delay: 0.6s; }
+  /* Crosshair glow lines */
+  .glow-line {
+    background-color: var(--color-glow-core);
+    box-shadow:
+      0 0 6px 2px color-mix(in srgb, var(--color-glow) 90%, transparent),
+      0 0 26px 8px color-mix(in srgb, var(--color-glow) 42%, transparent),
+      0 0 70px 20px color-mix(in srgb, var(--color-pixel-orange) 16%, transparent);
+  }
 
-/* Fill mode for animations */
-.animate-fade-in,
-.animate-fade-in-up,
-.animate-fade-in-down,
-.animate-scale-in,
-.animate-slide-in-left,
-.animate-slide-in-right {
-  animation-fill-mode: both;
-}
+  /* Four-point star where the glow lines cross */
+  .flare-star {
+    background: radial-gradient(
+      closest-side,
+      var(--color-pixel-yellow),
+      var(--color-glow-core) 16%,
+      color-mix(in srgb, var(--color-glow) 55%, transparent) 40%,
+      transparent 72%
+    );
+    clip-path: polygon(50% 0, 54% 46%, 100% 50%, 54% 54%, 50% 100%, 46% 54%, 0 50%, 46% 46%);
+  }
+  .flare-core {
+    border-radius: 50%;
+    background: radial-gradient(
+      closest-side,
+      var(--color-glow-core),
+      color-mix(in srgb, var(--color-glow) 50%, transparent) 45%,
+      transparent
+    );
+  }
 
-/* Starry background animations */
-.animate-twinkle {
-  animation: twinkle ease-in-out infinite;
-}
+  .stripe-bar {
+    background-image: repeating-linear-gradient(
+      90deg,
+      var(--color-pixel-blue) 0 12px,
+      var(--color-pixel-purple) 12px 24px,
+      var(--color-pixel-orange) 24px 36px,
+      var(--color-pixel-yellow) 36px 48px
+    );
+  }
 
-.shooting-star {
-  position: absolute;
-  left: 0;
-  width: 100px;
-  height: 2px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), transparent);
-  border-radius: 50%;
-  animation: shooting 8s ease-in-out infinite;
-  opacity: 0;
-}
-
-.shooting-star::before {
-  content: '';
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: white;
-  border-radius: 50%;
-  top: -2px;
-  left: 0;
-  box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.6);
-}
-
-/* Custom cursor (desktop only) */
-.cursor-dot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  border-radius: 50%;
-  background: white;
-  pointer-events: none;
-  z-index: 9999;
-  mix-blend-mode: difference;
-  translate: -50% -50%;
-  transition: opacity 0.3s ease;
-  will-change: transform, width, height;
-}
-
-@media (pointer: coarse) {
-  .cursor-dot {
-    display: none !important;
+  .brick {
+    background-color: var(--color-pixel-purple);
+    background-image:
+      linear-gradient(var(--night) 3px, transparent 3px),
+      linear-gradient(90deg, var(--night) 3px, transparent 3px);
+    background-size: 32px 32px;
+    box-shadow: inset 0 0 0 3px var(--night);
   }
 }
 
-/* Pacman logo chomp animation */
-.pacman-logo {
-  clip-path: polygon(50% 50%, 100% 15%, 100% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 85%, 50% 50%);
-  transition: clip-path 0.15s ease-in-out;
+@keyframes glint {
+  0%, 5% { fill: var(--color-pixel-yellow); }
+  6%, 100% { fill: var(--col); }
 }
 
-@keyframes pacman-chomp {
-  0%, 100% {
-    clip-path: polygon(50% 50%, 100% 15%, 100% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 85%, 50% 50%);
+@keyframes reveal-rise {
+  from { opacity: 0; translate: 0 56px; }
+  to { opacity: 1; translate: 0 0; }
+}
+
+@keyframes reveal-grow {
+  from { scale: 1 0; }
+  to { scale: 1 1; }
+}
+
+@keyframes reveal-wipe {
+  from { clip-path: inset(0 100% -24px 0); }
+  to { clip-path: inset(0 -24px -24px 0); }
+}
+
+/* Reveals play once an element is well into view (see useScrollReveal).
+   Hidden states only apply when JS is running and motion is allowed. */
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal:not(.is-revealed) {
+    opacity: 0;
   }
-  50% {
-    clip-path: polygon(50% 50%, 100% 45%, 100% 0%, 0% 0%, 0% 100%, 100% 100%, 100% 55%, 50% 50%);
+  .js .reveal-wipe:not(.is-revealed) {
+    clip-path: inset(0 100% -24px 0);
+  }
+  .js .reveal-grow:not(.is-revealed) {
+    scale: 1 0;
+  }
+  .js .reveal.is-revealed {
+    animation: reveal-rise 0.5s steps(6) both;
+  }
+  .js .reveal-wipe.is-revealed {
+    animation: reveal-wipe 0.6s steps(10) both;
+  }
+  .js .reveal-grow.is-revealed {
+    transform-origin: bottom;
+    animation: reveal-grow 0.6s steps(8) both;
   }
 }
 
-.pacman-logo-parent:hover .pacman-logo {
-  animation: pacman-chomp 0.35s ease-in-out infinite;
-}
-
-/* Game pacman head */
-.pacman-game-head {
-  animation: pacman-chomp 0.3s ease-in-out infinite;
-}
-
-/* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    animation: none !important;
+    transition: none !important;
   }
 }

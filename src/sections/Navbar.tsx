@@ -1,29 +1,11 @@
-import { useState, useEffect } from "react"
-import { ArrowUpRight, Menu, X, Moon, Sun } from "lucide-react"
-import { Link as RouterLink, useLocation } from "react-router-dom"
-import { Container } from "../components/layout"
+import { useEffect, useState } from "react"
+import { Link, useLocation } from "react-router"
+import { Container, SiteLink } from "../components/layout"
+import { LogoMark, PixelSprite } from "../components/pixel"
 import { useTheme } from "../hooks/useTheme"
-
-function PacmanLogo() {
-  return (
-    <span className="pacman-logo-parent">
-      <svg
-        width="28"
-        height="28"
-        viewBox="0 0 28 28"
-        xmlns="http://www.w3.org/2000/svg"
-        className="pacman-logo"
-      >
-        <circle cx="14" cy="14" r="14" fill="currentColor" />
-      </svg>
-    </span>
-  )
-}
-
-const navLinks = [
-  { to: "/projects", label: "Projects" },
-  { to: "/blog", label: "Blog" },
-]
+import { cn } from "../lib/utils"
+import { site } from "../data/site"
+import { navLinks } from "../data/nav"
 
 export function Navbar() {
   const { theme, toggleTheme } = useTheme()
@@ -45,119 +27,98 @@ export function Navbar() {
     }
   }, [mobileOpen])
 
-  return (
-    <header className="sticky top-0 bg-background/70 z-10 border-border backdrop-blur-[6px] animate-fade-in-down">
-      <Container>
-        <nav className="h-16 md:h-25.5 flex items-center justify-between">
-          {/* Left Side */}
-          <div className="flex items-center gap-8">
-            <RouterLink
-              aria-label="Logo"
-              to="/"
-              className="text-foreground hover:opacity-70 transition-opacity"
-            >
-              <PacmanLogo />
-            </RouterLink>
+  const isActive = (to: string) => !to.includes("#") && pathname.startsWith(to)
 
-            {/* Desktop Nav Links */}
-            <div className="hidden md:flex items-center gap-6">
-              {navLinks.map((link) => (
-                <RouterLink
-                  key={link.to}
+  return (
+    <header className="sticky top-0 z-50 border-b-[3px] border-border bg-background">
+      <Container>
+        <nav aria-label="Primary" className="flex min-h-[76px] items-center justify-between gap-4">
+          <Link to="/" aria-label={`${site.name}, home`} className="group flex min-h-11 items-center gap-3.5 text-foreground">
+            <LogoMark cell={5} className="group-hover:animate-shake" />
+            <span className="flex flex-col gap-1 font-pixel uppercase leading-none">
+              <span className="text-[14px] font-bold">{site.name}</span>
+              <span className="text-[12px] text-foreground-secondary">{site.role}</span>
+            </span>
+          </Link>
+
+          <ul className="hidden items-center gap-0.5 lg:flex">
+            {navLinks.map((link) => (
+              <li key={link.to}>
+                <SiteLink
                   to={link.to}
-                  className={`text-sm transition-colors ${pathname.startsWith(link.to) ? "text-foreground font-medium" : "text-foreground-secondary hover:text-foreground"}`}
+                  aria-current={isActive(link.to) ? "page" : undefined}
+                  className={cn(
+                    "block px-3 py-[15px] font-pixel text-[13px] uppercase leading-none text-foreground hover:bg-pixel-orange hover:text-night",
+                    isActive(link.to) && "bg-pixel-orange text-night",
+                  )}
                 >
                   {link.label}
-                </RouterLink>
-              ))}
-            </div>
-          </div>
+                </SiteLink>
+              </li>
+            ))}
+          </ul>
 
-          {/* Right Side */}
-          <div className="flex items-center gap-4">
-            <a
-              href="mailto:hello@khinekyaw.com"
-              className="hidden sm:flex px-4 py-2 rounded-full border border-border items-center gap-2 hover:bg-secondary hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+              className="grid size-11 place-items-center border-[3px] border-border text-foreground hover:bg-pixel-yellow hover:text-night"
             >
-              <span className="text-sm font-medium text-foreground">
-                Let's Connect
-              </span>
-              <ArrowUpRight size={12} className="text-foreground" />
+              <PixelSprite name={theme === "light" ? "moon" : "sun"} cell="3px" />
+            </button>
+
+            <a
+              href={`mailto:${site.email}`}
+              className="hidden min-h-11 items-center gap-2.5 bg-night px-4 font-pixel text-[13px] uppercase text-night-foreground shadow-[4px_4px_0_var(--color-pixel-orange)] hover:text-pixel-orange sm:inline-flex"
+            >
+              <span aria-hidden="true" className="block size-2 animate-blink bg-success" />
+              Say hello
             </a>
 
             <button
-              onClick={toggleTheme}
-              className="p-2 rounded-full cursor-pointer hover:bg-secondary hover:rotate-12 active:scale-95 transition-all duration-200"
-              aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
-            >
-              {theme === "light" ? (
-                <Moon size={18} className="text-foreground" />
-              ) : (
-                <Sun size={18} className="text-foreground" />
-              )}
-            </button>
-
-            {/* Mobile Hamburger */}
-            <button
+              type="button"
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 rounded-full cursor-pointer hover:bg-secondary active:scale-95 transition-all duration-200"
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-menu"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
+              className="grid size-11 place-items-center border-[3px] border-border text-foreground lg:hidden"
             >
-              {mobileOpen ? (
-                <X size={20} className="text-foreground" />
-              ) : (
-                <Menu size={20} className="text-foreground" />
-              )}
+              <PixelSprite name={mobileOpen ? "close" : "menu"} cell="3px" />
             </button>
           </div>
         </nav>
       </Container>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       <div
-        className={`md:hidden overflow-hidden border-border-light transition-all duration-300 ease-in-out ${
-          mobileOpen ? "max-h-60 border-t" : "max-h-0"
-        }`}
+        id="mobile-menu"
+        hidden={!mobileOpen}
+        className="border-t-[3px] border-border bg-background lg:hidden"
       >
         <Container>
-          <div className="flex flex-col py-4 gap-1">
+          <ul className="flex flex-col py-3">
             {navLinks.map((link, index) => (
-              <RouterLink
-                key={link.to}
-                to={link.to}
-                className={`px-3 py-2.5 rounded-lg text-sm transition-all duration-300 ${
-                  mobileOpen
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-2"
-                } ${
-                  pathname.startsWith(link.to)
-                    ? "text-foreground font-medium bg-secondary"
-                    : "text-foreground-secondary hover:text-foreground hover:bg-secondary"
-                }`}
-                style={{
-                  transitionDelay: mobileOpen ? `${index * 75}ms` : "0ms",
-                }}
-              >
-                {link.label}
-              </RouterLink>
+              <li key={link.to} className="animate-rise-in" style={{ animationDelay: `${index * 60}ms` }}>
+                <SiteLink
+                  to={link.to}
+                  aria-current={isActive(link.to) ? "page" : undefined}
+                  className={cn(
+                    "flex min-h-12 items-center justify-between border-b-2 border-dashed border-border-light font-pixel text-[15px] uppercase text-foreground",
+                    isActive(link.to) && "underline decoration-pixel-orange decoration-4 underline-offset-8",
+                  )}
+                >
+                  {link.label}
+                  <span aria-hidden="true">▸</span>
+                </SiteLink>
+              </li>
             ))}
-            <a
-              href="mailto:hello@khinekyaw.com"
-              className={`sm:hidden px-3 py-2.5 rounded-lg text-sm text-foreground-secondary hover:text-foreground hover:bg-secondary transition-all duration-300 flex items-center gap-2 ${
-                mobileOpen
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-2"
-              }`}
-              style={{
-                transitionDelay: mobileOpen
-                  ? `${navLinks.length * 75}ms`
-                  : "0ms",
-              }}
-            >
-              Let's Connect
-              <ArrowUpRight size={12} />
-            </a>
-          </div>
+            <li className="pt-4 sm:hidden">
+              <a href={`mailto:${site.email}`} className="px-btn px-btn-primary">
+                Say hello
+              </a>
+            </li>
+          </ul>
         </Container>
       </div>
     </header>

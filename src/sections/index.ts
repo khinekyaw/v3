@@ -1,5 +1,9 @@
 export { Navbar } from './Navbar';
 export { Hero } from './Hero';
+export { Ticker } from './Ticker';
+export { About } from './About';
 export { Projects } from './Projects';
-export { Blog } from './Blog';
+export { Experiences } from './Experiences';
+export { Quests } from './Quests';
+export { Contact } from './Contact';
 export { Footer } from './Footer';

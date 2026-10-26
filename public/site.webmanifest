@@ -1,0 +1,14 @@
+{
+  "name": "Khine Kyaw Tun — Software Engineer",
+  "short_name": "Khine",
+  "description": "Software engineer building engaging web experiences with React, Next.js & TypeScript.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#E7E7EE",
+  "theme_color": "#121216",
+  "icons": [
+    { "src": "/icons/pwa-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/pwa-512x512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/maskable-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
