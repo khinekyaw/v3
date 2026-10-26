@@ -5,11 +5,12 @@ interface SectionProps {
   children: ReactNode;
   className?: string;
   id?: string;
+  labelledBy?: string;
 }
 
-export function Section({ children, className, id }: SectionProps) {
+export function Section({ children, className, id, labelledBy }: SectionProps) {
   return (
-    <section id={id} className={cn('py-12 md:py-20', className)}>
+    <section id={id} aria-labelledby={labelledBy} className={cn('relative py-[clamp(56px,7vw,112px)]', className)}>
       {children}
     </section>
   );

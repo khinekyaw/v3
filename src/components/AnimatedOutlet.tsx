@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { useLocation, useOutlet } from "react-router-dom"
-import { PacmanCurtain } from "./PacmanCurtain"
+import { useLocation, useOutlet } from "react-router"
+import { PixelCurtain } from "./pixel"
 
 export function AnimatedOutlet() {
   const location = useLocation()
@@ -26,14 +26,19 @@ export function AnimatedOutlet() {
 
   return (
     <div className="relative">
-      <div>{displayedOutlet}</div>
+      <div>{active ? displayedOutlet : outlet}</div>
 
       {active && (
-        <PacmanCurtain
+        <PixelCurtain
           key={transitionCount}
           onCovered={() => {
             setDisplayedOutlet(pendingOutlet)
-            window.scrollTo(0, 0)
+            // Wait for the new page to render, then jump to its anchor or the top
+            requestAnimationFrame(() => {
+              const target = location.hash && document.getElementById(location.hash.slice(1))
+              if (target) target.scrollIntoView({ behavior: "instant" })
+              else window.scrollTo({ top: 0, behavior: "instant" })
+            })
           }}
           onDone={() => {
             setActive(false)

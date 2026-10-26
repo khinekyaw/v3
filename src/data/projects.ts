@@ -113,7 +113,7 @@ export const experimentProjects: Project[] = [
     image: "/images/projects/v3-demo.webp",
     summary: "This website, vibe coded with Claude Code.",
     description:
-      "My personal portfolio website, fully vibe coded with Claude Code. I fed it the Figma design and let it do the heavy lifting. Built with React, Tailwind CSS, and a lot of AI-assisted back and forth.\n\nUI design inspired by [SimpFolio by Hisyam Akbar](https://dribbble.com/shots/26490004-Minimalist-Personal-Site-SimpFolio) on Dribbble.\n\nBuilt with Claude Code.",
+      "My personal site, redrawn as pixel art. Almost everything here is made of small boxes: the letters, the diagonal band in the hero, the sprites, the halftone portrait and even the link previews.\n\nI built it with Claude Code on React Router and Tailwind CSS. Every page is pre-rendered to plain HTML, the hero poster is drawn on a canvas to keep it light, and project images stay pixelated until you hover them.",
     links: [{ label: "GITHUB", href: "https://github.com/khinekyaw/v3" }],
   },
   {

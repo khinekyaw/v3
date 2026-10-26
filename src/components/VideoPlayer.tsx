@@ -72,7 +72,7 @@ export function VideoPlayer({ src, className = '' }: VideoPlayerProps) {
   return (
     <div
       ref={containerRef}
-      className={`relative group cursor-pointer ${className}`}
+      className={`relative group cursor-pixel-pointer ${className}`}
       onClick={togglePlay}
     >
       <video
@@ -87,30 +87,30 @@ export function VideoPlayer({ src, className = '' }: VideoPlayerProps) {
 
       {/* Play/pause overlay */}
       <div
-        className={`absolute inset-0 flex items-center justify-center transition-opacity duration-200 ${
+        className={`absolute inset-0 z-2 flex items-center justify-center transition-opacity duration-200 ${
           isPlaying ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'
         }`}
       >
-        <div className="w-12 h-12 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center">
+        <div className="w-12 h-12 bg-night/70 text-night-foreground flex items-center justify-center">
           {isPlaying ? (
-            <svg width="16" height="18" viewBox="0 0 16 18" fill="white">
-              <rect x="1" y="0" width="5" height="18" rx="1" />
-              <rect x="10" y="0" width="5" height="18" rx="1" />
+            <svg width="16" height="18" viewBox="0 0 16 18" fill="currentColor">
+              <rect x="1" y="0" width="5" height="18" />
+              <rect x="10" y="0" width="5" height="18" />
             </svg>
           ) : (
-            <svg width="16" height="18" viewBox="0 0 16 18" fill="white">
+            <svg width="16" height="18" viewBox="0 0 16 18" fill="currentColor">
               <path d="M2 1.5v15l13-7.5z" />
             </svg>
           )}
         </div>
       </div>
 
-      <div className="absolute bottom-3 right-3 flex items-center gap-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200">
+      <div className="absolute bottom-3 right-3 z-2 flex items-center gap-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200">
         <button
           type="button"
           onClick={toggleMute}
           aria-label={isMuted ? 'Unmute video' : 'Mute video'}
-          className="w-9 h-9 rounded-full bg-background/90 text-foreground shadow-lg backdrop-blur-sm flex items-center justify-center transition-all hover:bg-white"
+          className="w-11 h-11 border-[3px] border-border bg-background text-foreground flex items-center justify-center hover:bg-pixel-yellow hover:text-night"
         >
           {isMuted ? <VolumeOff size={16} /> : <Volume2 size={16} />}
         </button>
@@ -119,7 +119,7 @@ export function VideoPlayer({ src, className = '' }: VideoPlayerProps) {
           type="button"
           onClick={toggleFullscreen}
           aria-label={isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen'}
-          className="w-9 h-9 rounded-full bg-background/90 text-foreground shadow-lg backdrop-blur-sm flex items-center justify-center transition-all hover:bg-white"
+          className="w-11 h-11 border-[3px] border-border bg-background text-foreground flex items-center justify-center hover:bg-pixel-yellow hover:text-night"
         >
           {isFullscreen ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
         </button>
