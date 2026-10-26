@@ -40,7 +40,7 @@ export const experiences = [
     dateRange: 'Dec 2023',
     isPresent: true,
     summary:
-      "I lead a three-person frontend team and have shipped 5+ client apps with people across two countries. I also built our Asana-style task platform end to end (Next.js, PostgreSQL, 300+ Playwright tests) and co-built the Storybook design system our projects now share.",
+      "I've shipped 5+ client apps with a team spread across two countries. I also built our Asana-style task platform end to end (Next.js, PostgreSQL, 300+ Playwright tests) and co-built the Storybook design system our projects now share.",
   },
   {
     company: 'Dkmads',
