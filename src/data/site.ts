@@ -12,6 +12,8 @@ export const site = {
   social: {
     linkedin: 'https://linkedin.com/in/khinekyaw',
     github: 'https://github.com/khinekyaw',
+    youtube: 'https://www.youtube.com/@KK_Vibing',
+    tiktok: 'https://www.tiktok.com/@kk_vibing',
   },
   skills: {
     languages: ['TypeScript', 'JavaScript', 'HTML', 'CSS', 'Python'],

@@ -27,7 +27,7 @@ const personSchema = {
   name: site.name,
   url: SITE_URL,
   jobTitle: site.role,
-  sameAs: [site.social.linkedin, site.social.github],
+  sameAs: Object.values(site.social),
 }
 
 // Runs before first paint: dark mode never flashes light, and the "js" class

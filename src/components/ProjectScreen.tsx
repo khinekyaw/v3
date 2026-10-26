@@ -4,10 +4,11 @@ import { Image } from "./ui/Image"
 import { VideoPlayer } from "./VideoPlayer"
 import type { Project } from "../data/projects"
 
-/** The project's media framed as a pixel "screen": boxes until hovered or toggled. */
+/** The project's media framed as a pixel "screen": boxes until hovered or toggled. YouTube embeds play as is. */
 export function ProjectScreen({ project }: { project: Project }) {
   const [showOriginal, setShowOriginal] = useState(false)
-  const hasMedia = Boolean(project.video || project.image)
+  // A cross-origin iframe can't be drawn to a canvas, so embeds skip the pixel effect
+  const hasMedia = !project.youtube && Boolean(project.video || project.image)
 
   return (
     <figure className="border-[3px] border-border bg-night shadow-[10px_10px_0_var(--color-border)]">
@@ -36,7 +37,17 @@ export function ProjectScreen({ project }: { project: Project }) {
           </>
         )}
       </figcaption>
-      {hasMedia ? (
+      {project.youtube ? (
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${project.youtube}?rel=0`}
+          title={`${project.title} video`}
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+          className="block aspect-video w-full"
+        />
+      ) : hasMedia ? (
         <PixelMedia showOriginal={showOriginal} className="aspect-video w-full overflow-hidden">
           {project.video ? (
             <VideoPlayer src={project.video} className="size-full" />

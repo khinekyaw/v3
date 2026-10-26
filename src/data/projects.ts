@@ -6,6 +6,8 @@ export interface Project {
   logo?: string
   image?: string
   video?: string
+  /** YouTube video ID, embedded in place of the image or video */
+  youtube?: string
   links: { label: string; href: string }[]
 }
 
@@ -77,13 +79,23 @@ export const professionalProjects: Project[] = [
 
 export const experimentProjects: Project[] = [
   {
+    slug: "sit-nat",
+    title: "Sit Nat",
+    summary: "Godot action game in a Burmese temple.",
+    description:
+      "An action game prototype built in Godot 4.7. The first arena is a ruined Burmese temple courtyard lit by braziers, where the hero will face the Belu King Dathagiri.\n\nRight now the hero can run, jump, sprint and swing a sword, and you can switch between a third-person and an isometric camera. Combat and the boss come next.\n\n## How It Works\n\nThe arena is built by a seeded Python script that places around 380 props, so the layout can be changed and rebuilt the same way every time. At load, repeated props are merged into batches, and a light manager decides which braziers get to cast shadows, which keeps the frame rate steady.\n\n## Key Features\n\n- **Generated arena** — a seeded script lays out the courtyard and its props\n- **Two cameras** — third-person mouse look or an isometric view that follows the hero\n- **Custom shaders** — flames, embers, glowing runes on the hero and a sword trail\n- **Performance passes** — prop batching, foliage LOD and a shadow budget for the lights",
+    logo: "/images/projects/sit-nat-logo.webp",
+    youtube: "ZPAoVYAELZU",
+    links: [],
+  },
+  {
     slug: "foundry",
     title: "Foundry",
     summary: "Local design tool for building pages and systems.",
     description:
       "A local design tool for shaping web interfaces from rough ideas into polished pages. Foundry brings pages, reusable components, typography, and design tokens into one focused workspace, so it is easier to explore ideas and keep the final design consistent.\n\n## How It Works\n\nYou create pages inside a local project, build reusable components, and define visual styles like colors, spacing, and typography. Foundry renders everything into a live preview, so changes to components or tokens can be seen across the design right away.\n\n## Key Features\n\n- **Local-first projects** — design work stays on your machine\n- **Reusable components** — create once, place across multiple pages\n- **Design tokens** — manage colors, spacing, and typography from one system\n- **Live preview** — see page and style changes as you refine the interface\n- **Agent-friendly workflow** — built with tools that make it easier for AI coding agents to understand and update projects",
     logo: "/images/projects/foundry-logo.webp",
-    video: "/images/projects/foundry-demo.webm",
+    youtube: "Hp80TI71mEI",
     links: [],
   },
   {
@@ -94,6 +106,7 @@ export const experimentProjects: Project[] = [
       "An interactive 3D AI agent rendered in the browser, inspired by Grok's Ani. Users can speak or type to Arisa, and she responds with voice, synchronized lip movements, body animations, and emotion-driven facial expressions — all in real time.\n\n## How It Works\n\nThe user records audio or types a message. Audio is transcribed via ElevenLabs STT, then sent to xAI Grok which returns a text response along with an animation state and facial expression weights. The response is converted back to speech with ElevenLabs TTS, and lip-sync viseme data is extracted using Rhubarb. On the frontend, a 3D avatar rendered with Three.js and React Three Fiber plays the matching body animation, blends facial morph targets for the expression, and synchronizes mouth shapes to the audio.\n\n## Key Features\n\n- **Voice and text input** — speak or type, Arisa understands both\n- **Real-time lip sync** — mouth shapes driven by viseme data from Rhubarb\n- **LLM-controlled animations** — Grok decides the body animation and facial expression for each response\n- **Emotion-aware responses** — happy, sad, angry, relaxed, surprised — reflected in both voice tone and 3D expression\n- **Morph target blending** — smooth transitions between facial expressions using blend shapes\n\n## Tech Stack\n\n| Layer | Technology |\n|-------|------------|\n| Frontend | React, React Three Fiber, Three.js, Tailwind CSS |\n| Backend | Node.js, Express, TypeScript |\n| LLM | xAI Grok |\n| Voice | ElevenLabs (STT + TTS) |\n| Lip Sync | Rhubarb |\n| 3D | FBX animations, morph target blending |",
     logo: "/images/projects/arisa-logo.webp",
     image: "/images/projects/arisa-demo.webp",
+    youtube: "hJS50rNDcy4",
     links: [],
   },
   {

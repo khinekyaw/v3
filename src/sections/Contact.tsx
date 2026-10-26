@@ -53,6 +53,12 @@ export function Contact() {
           <a className="px-btn px-btn-night" href={site.social.github} target="_blank" rel="noopener noreferrer">
             GitHub ↗
           </a>
+          <a className="px-btn px-btn-night" href={site.social.youtube} target="_blank" rel="noopener noreferrer">
+            YouTube ↗
+          </a>
+          <a className="px-btn px-btn-night" href={site.social.tiktok} target="_blank" rel="noopener noreferrer">
+            TikTok ↗
+          </a>
           <p className="ml-2 font-pixel text-[13px] uppercase text-night-muted">{site.location} · GMT+7</p>
         </div>
         <div aria-hidden="true" className="mt-[72px] flex animate-march gap-7">
